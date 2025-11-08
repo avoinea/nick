@@ -5,8 +5,8 @@ export const up = async (knex: Knex): Promise<void> => {
     table.string('id').primary();
     table.string('title');
     table.string('group');
-    table.jsonb('schema').notNullable();
-    table.jsonb('data').notNullable();
+    table.json('schema').notNullable();
+    table.json('data').notNullable();
   });
 };
 

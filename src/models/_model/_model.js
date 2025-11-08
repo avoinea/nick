@@ -62,15 +62,7 @@ export class Model extends mixin(ObjectionModel, [
         const attribute = formatAttribute(key);
         let operator = isArray(value) ? value[0] : '=';
         const values = isArray(value) ? value[1] : value;
-        let valueWrapper =
-          isArray(values) && operator !== '&&' ? 'any(?)' : '?';
-        if (isArray(values) && operator === 'all') {
-          operator = '=';
-          valueWrapper = 'all(?)';
-        }
-        if (operator === '@@') {
-          valueWrapper = 'to_tsquery(?)';
-        }
+
         if (values === null) {
           query =
             operator === 'is not'
@@ -78,10 +70,19 @@ export class Model extends mixin(ObjectionModel, [
               : query.whereNull(key);
         } else if (operator === 'raw') {
           query = query.whereRaw(values);
+        } else if (isArray(values) && (operator === '=' || operator === 'all')) {
+          // Use whereIn for SQLite compatibility instead of ANY/ALL
+          query = query.whereIn(key, values);
+        } else if (operator === '@@') {
+          // Full-text search - SQLite doesn't support to_tsquery, skip for now
+          // This will need to be implemented with FTS5 separately
+          console.warn('Full-text search (@@) not yet implemented for SQLite');
+        } else if (operator === '&&') {
+          // Array overlap operator - PostgreSQL specific
+          // For SQLite, we'd need to implement this differently with JSON
+          console.warn('Array overlap (&&) not yet implemented for SQLite');
         } else {
-          query = query.whereRaw(`${attribute} ${operator} ${valueWrapper}`, [
-            values,
-          ]);
+          query = query.whereRaw(`${attribute} ${operator} ?`, [values]);
         }
       });
     }

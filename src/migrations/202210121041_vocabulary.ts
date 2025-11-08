@@ -4,7 +4,7 @@ export const up = async (knex: Knex): Promise<void> => {
   await knex.schema.createTable('vocabulary', (table: Knex.TableBuilder) => {
     table.string('id').primary();
     table.string('title');
-    table.jsonb('items').notNullable();
+    table.json('items').notNullable();
   });
 };
 

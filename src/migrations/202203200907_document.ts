@@ -36,11 +36,11 @@ export const up = async (knex: Knex): Promise<void> => {
       .references('user.id')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
-    table.jsonb('json').notNullable();
-    table.jsonb('lock').notNullable();
+    table.json('json').notNullable();
+    table.json('lock').notNullable();
     table.boolean('inherit_roles').notNullable().defaultTo(true);
     table.string('workflow_state').notNullable();
-    table.jsonb('workflow_history').notNullable();
+    table.json('workflow_history').notNullable();
     table.index(['parent', 'id']);
   });
 
@@ -59,7 +59,7 @@ export const up = async (knex: Knex): Promise<void> => {
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
     table.string('id').notNullable();
-    table.jsonb('json').notNullable();
+    table.json('json').notNullable();
     table.primary(['document', 'version']);
   });
 

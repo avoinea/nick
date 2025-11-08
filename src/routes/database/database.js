@@ -18,19 +18,24 @@ export default [
     permission: 'Manage Site',
     client: 'getDatabase',
     handler: async (req, trx) => {
-      // Get db size
+      const fs = require('fs');
       const knex = Model.knex();
-      const postgres = await knex
-        .raw("select pg_database_size('nick')")
-        .transacting(trx);
+
+      // Get db size for SQLite
+      let dbSize = 0;
+      try {
+        const stats = fs.statSync(config.connection.filename);
+        dbSize = stats.size;
+      } catch (e) {
+        // Database file might not exist yet
+      }
 
       // Return database information
       return {
         json: {
           '@id': `${getRootUrl(req)}/@database`,
-          db_name: config.connection.database,
-          db_size: formatSize(postgres.rows[0].pg_database_size),
-          pool: knexfile.production.pool,
+          db_name: config.connection.filename,
+          db_size: formatSize(dbSize),
           blob_size: formatSize(await du(config.blobsDir)),
         },
       };

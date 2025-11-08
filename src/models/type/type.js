@@ -17,6 +17,11 @@ import { Behavior, Model } from '../../models';
 export class Type extends Model {
   static collection = TypeCollection;
 
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['schema', '_schema', 'allowed_content_types'];
+  }
+
   // Set relation mappings
   static get relationMappings() {
     // Prevent circular imports

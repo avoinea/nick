@@ -49,19 +49,21 @@ export const seedCatalog = async (trx, profilePath) => {
             table.dateTime(field).index();
             break;
           case 'string[]':
-            table.specificType(field, 'character varying(255)[]').index();
+            // Use JSON for array types in SQLite
+            table.json(field);
             break;
           case 'uuid[]':
-            table.specificType(field, 'uuid[]').index();
+            // Use JSON for array types in SQLite
+            table.json(field);
             break;
           case 'embed':
-            table.specificType(
-              field,
-              `vector(${config.ai.models.embed.dimensions})`,
-            );
+            // SQLite doesn't support vector types, use JSON
+            table.json(field);
             break;
           case 'text':
-            table.specificType(field, 'tsvector').index(null, 'GIN');
+            // SQLite full-text search would require FTS5 virtual tables
+            // For now, just use a regular text column
+            table.text(field);
             break;
           default:
             console.log(`Unhandled index type: ${index.type}`);
@@ -104,7 +106,8 @@ export const seedCatalog = async (trx, profilePath) => {
             table.json(metadata.name);
             break;
           case 'string[]':
-            table.specificType(metadata.name, 'character varying(255)[]');
+            // Use JSON for array types in SQLite
+            table.json(metadata.name);
             break;
           case 'text':
             table.text(metadata.name);

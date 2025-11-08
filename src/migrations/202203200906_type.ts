@@ -5,7 +5,7 @@ export const up = async (knex: Knex): Promise<void> => {
     table.string('id').primary().notNullable();
     table.string('title').notNullable();
     table.string('description');
-    table.jsonb('schema').notNullable();
+    table.json('schema').notNullable();
   });
   await knex.schema.createTable('type', (table: Knex.TableBuilder) => {
     table.string('id').primary().notNullable();
@@ -13,9 +13,9 @@ export const up = async (knex: Knex): Promise<void> => {
     table.string('description');
     table.boolean('global_allow');
     table.boolean('filter_content_types');
-    table.specificType('allowed_content_types', 'character varying(255)[]');
-    table.jsonb('schema').notNullable();
-    table.jsonb('_schema');
+    table.json('allowed_content_types');
+    table.json('schema').notNullable();
+    table.json('_schema');
     table
       .string('workflow')
       .references('workflow.id')

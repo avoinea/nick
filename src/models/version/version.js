@@ -12,6 +12,11 @@ import { getRootUrl, getUrl } from '../../helpers';
  * @extends Model
  */
 export class Version extends Model {
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['json'];
+  }
+
   // Set relation mappings
   static get relationMappings() {
     // Prevent circular imports

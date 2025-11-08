@@ -9,8 +9,21 @@ const { config } = require(`${process.cwd()}/config`);
 
 // Initialize knex with proper types
 export const knex = knexPkg({
-  client: 'pg',
+  client: 'better-sqlite3',
   connection: config.connection,
+  useNullAsDefault: true,
+  pool: {
+    min: 0,
+    max: 10,
+    acquireTimeoutMillis: 30000,
+    afterCreate: (conn: any, cb: any) => {
+      // Enable WAL mode for better concurrency
+      conn.pragma('journal_mode = WAL');
+      // Set a busy timeout
+      conn.pragma('busy_timeout = 30000');
+      cb(null, conn);
+    }
+  },
 });
 
 // Debug
@@ -19,14 +32,19 @@ knex.on('query', (query: Knex.QueryBuilder) => {
 });
 
 /**
- * Get postgres version
- * @method getPostgresVersion
+ * Get database version
+ * @method getDatabaseVersion
  * @param {Transaction} trx Transaction object
- * @returns {Promise<string>} Postgres version.
+ * @returns {Promise<string>} Database version.
  */
-export async function getPostgresVersion(
+export async function getDatabaseVersion(
   trx: Knex.Transaction,
 ): Promise<string> {
-  const postgres = await knex.raw('show server_version').transacting(trx);
-  return postgres.rows[0].server_version;
+  const result = await knex.raw('SELECT sqlite_version() as version').transacting(trx);
+  return result[0].version;
 }
+
+/**
+ * @deprecated Use getDatabaseVersion instead
+ */
+export const getPostgresVersion = getDatabaseVersion;

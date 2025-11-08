@@ -16,7 +16,7 @@ export const up = async (knex: Knex): Promise<void> => {
     table.string('group');
     table.boolean('enabled');
     table.boolean('sortable');
-    table.jsonb('operators');
+    table.json('operators');
     table.string('vocabulary');
   });
 };

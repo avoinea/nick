@@ -13,6 +13,11 @@ import { Model } from '../../models';
  * @extends Model
  */
 export class Workflow extends Model {
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['json'];
+  }
+
   /**
    * Returns JSON data.
    * @method toJSON

@@ -65,6 +65,11 @@ export class Document extends Model {
 
   static idColumn = 'uuid';
 
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['json', 'lock', 'workflow_history'];
+  }
+
   // Set relation mappings
   static get relationMappings() {
     // Prevent circular imports
@@ -1086,32 +1091,38 @@ export class Document extends Model {
       fields['document'] = { type: 'uuid', value: this.uuid };
 
       // Insert into catalog
+      // SQLite: Store text directly instead of using to_tsvector
+      // Serialize objects/arrays to JSON strings for SQLite compatibility
+      const insertValues = map(values(fields), (field) =>
+        field.type === 'json' || (isObject(field.value) && !Buffer.isBuffer(field.value))
+          ? JSON.stringify(field.value)
+          : field.value
+      );
       await knex
         .raw(
           `INSERT INTO catalog ("${keys(fields).join('", "')}") VALUES (${map(
             keys(fields),
-            (field) =>
-              fields[field].type === 'text' && !fields[field].metadata
-                ? 'to_tsvector(?)'
-                : '?',
+            () => '?',
           ).join(', ')});`,
-          map(values(fields), (field) => field.value),
+          insertValues,
         )
         .transacting(trx);
     } else {
-      // Insert into catalog
+      // Update catalog
+      // SQLite: Store text directly instead of using to_tsvector
+      // Serialize objects/arrays to JSON strings for SQLite compatibility
+      const updateValues = map(values(fields), (field) =>
+        field.type === 'json' || (isObject(field.value) && !Buffer.isBuffer(field.value))
+          ? JSON.stringify(field.value)
+          : field.value
+      );
       await knex
         .raw(
           `UPDATE catalog SET ${map(
             keys(fields),
-            (key) =>
-              `"${key}" = ${
-                fields[key].type === 'text' && !fields[key].metadata
-                  ? 'to_tsvector(?)'
-                  : '?'
-              }`,
+            (key) => `"${key}" = ?`,
           ).join(', ')} WHERE document = '${this.uuid}';`,
-          map(values(fields), (field) => field.value),
+          updateValues,
         )
         .transacting(trx);
     }

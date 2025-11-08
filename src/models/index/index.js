@@ -16,6 +16,11 @@ import { IndexCollection } from '../../collections';
 export class Index extends Model {
   static collection = IndexCollection;
 
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['operators'];
+  }
+
   /**
    * Returns JSON data.
    * @method toJSON

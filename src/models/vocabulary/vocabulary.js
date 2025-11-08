@@ -12,6 +12,11 @@ import { getRootlUrl } from '../../helpers';
  * @extends Model
  */
 export class Vocabulary extends Model {
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['items'];
+  }
+
   static get jsonSchema() {
     return {
       type: 'object',

@@ -15,6 +15,11 @@ import { Model } from '../../models';
 export class Behavior extends Model {
   static collection = BehaviorCollection;
 
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['schema'];
+  }
+
   /**
    * Fetch schema.
    * @method fetchSchema

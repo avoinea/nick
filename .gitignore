@@ -25,7 +25,7 @@ lighthouse-report.html
 .#*
 *~
 
-/var/blobstorage
+/var
 
 # Tests
 /tests/bin

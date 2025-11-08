@@ -13,6 +13,11 @@ import { Model } from '../../models';
  * @extends Model
  */
 export class Controlpanel extends Model {
+  // Define JSON columns for SQLite compatibility
+  static get jsonAttributes() {
+    return ['schema', 'data'];
+  }
+
   /**
    * Returns JSON data.
    * @method toJSON

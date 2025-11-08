@@ -2,12 +2,9 @@ var path = require('path');
 var { config } = require('./config');
 
 const knexSettings = {
-  client: 'pg',
+  client: 'better-sqlite3',
   connection: config.connection,
-  pool: {
-    min: 2,
-    max: 10,
-  },
+  useNullAsDefault: true,
   migrations: {
     directory: path.resolve(__dirname, './src/migrations'),
     tableName: 'knex_migrations',
