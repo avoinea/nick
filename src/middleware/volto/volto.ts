@@ -11,5 +11,6 @@ export function removeZopeVhosting(
   next: NextFunction,
 ) {
   req.url = req.url.replace(/\/VirtualHostBase.*\/VirtualHostRoot/, '');
+  req.url = req.url.replace(/\/\+\+api\+\+/, '');
   next();
 }

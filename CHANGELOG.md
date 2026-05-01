@@ -183,6 +183,7 @@
 - Narrow down the `config.blobs` type to only allow 'file' or 'db' @sneridagh
 - Fix error with translation unlinking @robgietema
 - Fix error with language locator for languageroots @robgietema
+- Remove /++api++ from request url @robgietema
 
 ### Internal
 
