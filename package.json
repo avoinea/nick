@@ -25,7 +25,6 @@
   ],
   "scripts": {
     "bootstrap": "pnpm install && pnpm create-config && pnpm migrate && pnpm seed",
-    "client": "tsx src/client_test.ts",
     "coverage": "vitest --coverage",
     "convert": "tsx scripts/convert.ts",
     "export": "tsx scripts/export.ts",
@@ -44,10 +43,6 @@
     "rollback": "pnpm knex migrate:rollback --all",
     "reset": "pnpm rollback && pnpm migrate && pnpm seed",
     "test": "AUTH_RATE_LIMIT=1000 vitest"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true
   },
   "coverageThreshold": {
     "global": {
