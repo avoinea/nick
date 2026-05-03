@@ -36,7 +36,7 @@
     "singleQuote": true
   },
   "engines": {
-    "node": "^20 || ^22 || ^23 || ^24"
+    "node": "^22 || ^24 || ^25"
   },
   "devDependencies": {
     "@babel/core": "7.29.0",

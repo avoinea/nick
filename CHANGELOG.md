@@ -228,6 +228,7 @@
 - Make it possible to overwrite models @robgietema
 - Register event handler for content rules @robgietema
 - Pass remaining params in client to params object @robgietema
+- Upgrade node versions to supported versions @robgietema
 
 ### Documentation
 
