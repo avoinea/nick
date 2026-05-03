@@ -4,17 +4,23 @@
     {
       "id": "Anonymous",
       "title:i18n": "Anonymous",
-      "permissions": ["Login", "Register"]
+      "permissions": ["Login", "Register", "View Comments"]
     },
     {
       "id": "Authenticated",
       "title:i18n": "Authenticated",
-      "permissions": ["Logout", "Manage Preferences"]
+      "permissions": [
+        "Logout",
+        "Manage Preferences",
+        "View Comments",
+        "Add Comment",
+        "Modify Own Comments"
+      ]
     },
     {
       "id": "Owner",
       "title:i18n": "Owner",
-      "permissions": ["Add", "Submit"]
+      "permissions": ["Add", "Submit", "Modify Comments"]
     },
     {
       "id": "Reader",
@@ -34,12 +40,19 @@
     {
       "id": "Reviewer",
       "title:i18n": "Reviewer",
-      "permissions": ["Review"]
+      "permissions": ["Review", "Modify Comments"]
     },
     {
       "id": "Administrator",
       "title:i18n": "Administrator",
-      "permissions": ["Add", "Review", "Submit", "Manage Users", "Manage Site"]
+      "permissions": [
+        "Add",
+        "Review",
+        "Submit",
+        "Manage Users",
+        "Manage Site",
+        "Modify Comments"
+      ]
     }
   ]
 }

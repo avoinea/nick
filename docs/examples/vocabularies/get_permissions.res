@@ -9,6 +9,10 @@ Content-Type: application/json
       "token": "Add"
     },
     {
+      "title": "Add Comment",
+      "token": "Add Comment"
+    },
+    {
       "title": "Login",
       "token": "Login"
     },
@@ -33,6 +37,14 @@ Content-Type: application/json
       "token": "Modify"
     },
     {
+      "title": "Modify Comments",
+      "token": "Modify Comments"
+    },
+    {
+      "title": "Modify Own Comments",
+      "token": "Modify Own Comments"
+    },
+    {
       "title": "Register",
       "token": "Register"
     },
@@ -47,7 +59,11 @@ Content-Type: application/json
     {
       "title": "View",
       "token": "View"
+    },
+    {
+      "title": "View Comments",
+      "token": "View Comments"
     }
   ],
-  "items_total": 11
+  "items_total": 15
 }

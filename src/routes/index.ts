@@ -9,6 +9,7 @@ import aliases from './aliases/aliases';
 import authentication from './authentication/authentication';
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import catalog from './catalog/catalog';
+import comments from './comments/comments';
 import content from './content/content';
 import content_rules from './content_rules/content_rules';
 import contextnavigation from './contextnavigation/contextnavigation';
@@ -45,6 +46,7 @@ export default [
   ...authentication,
   ...breadcrumbs,
   ...catalog,
+  ...comments,
   ...content_rules,
   ...contextnavigation,
   ...controlpanels,

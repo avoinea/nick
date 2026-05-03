@@ -106,7 +106,7 @@ Content-Type: application/json
       "recurrence": "DTSTART:20260401T124909Z\nRRULE:FREQ=DAILY;INTERVAL=1;UNTIL=20260408T124900Z",
       "created": "2022-04-02T20:10:00.000Z",
       "effective": "2022-04-02T20:10:00.000Z",
-      "getObjSize": 631,
+      "getObjSize": 1090,
       "hasPreviewImage": false,
       "listCreators": ["admin"],
       "mime_type": null,

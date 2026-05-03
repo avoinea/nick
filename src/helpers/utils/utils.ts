@@ -15,11 +15,13 @@ import type { VocabularyTerm } from '../../types';
  */
 export async function mapAsync<Item>(
   array: Item[],
-  callback: (item: Item, index: number) => Promise<void>,
-): Promise<void> {
+  callback: (item: Item, index: number) => Promise<any>,
+): Promise<any[]> {
+  const output = [];
   for (let i = 0; i < array.length; i++) {
-    await callback(array[i], i);
+    output.push(await callback(array[i], i));
   }
+  return output;
 }
 
 /**

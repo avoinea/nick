@@ -116,6 +116,7 @@
 - Add exportimport script to migrate data @robgietema
 - Add context navigation endpoint @robgietema
 - Add depth option to navigation endpoint @robgietema
+- Add commenting @robgietema
 
 ### Bugfix
 

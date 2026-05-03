@@ -44,6 +44,22 @@
     {
       "id": "Submit",
       "title:i18n": "Submit"
+    },
+    {
+      "id": "View Comments",
+      "title:i18n": "View Comments"
+    },
+    {
+      "id": "Add Comment",
+      "title:i18n": "Add Comment"
+    },
+    {
+      "id": "Modify Comments",
+      "title:i18n": "Modify Comments"
+    },
+    {
+      "id": "Modify Own Comments",
+      "title:i18n": "Modify Own Comments"
     }
   ]
 }

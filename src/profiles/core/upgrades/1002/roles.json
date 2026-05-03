@@ -1,0 +1,30 @@
+{
+  "purge": false,
+  "roles": [
+    {
+      "id": "Anonymous",
+      "title:i18n": "Anonymous",
+      "permissions": ["View Comments"]
+    },
+    {
+      "id": "Authenticated",
+      "title:i18n": "Authenticated",
+      "permissions": ["View Comments", "Add Comment", "Modify Own Comments"]
+    },
+    {
+      "id": "Owner",
+      "title:i18n": "Owner",
+      "permissions": ["Modify Comments"]
+    },
+    {
+      "id": "Reviewer",
+      "title:i18n": "Reviewer",
+      "permissions": ["Modify Comments"]
+    },
+    {
+      "id": "Administrator",
+      "title:i18n": "Administrator",
+      "permissions": ["Modify Comments"]
+    }
+  ]
+}

@@ -242,7 +242,7 @@ Or use the client directly:
 {% include_relative examples/content/rss.ts %}
 ```
 
-### Successful Response (200 OK)
+## Successful Response (200 OK)
 
 If a resource has been retrieved successfully, the server responds with `200 OK`:
 

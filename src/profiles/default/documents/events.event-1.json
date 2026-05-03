@@ -39,5 +39,29 @@
       "79ba8858-1dd3-4719-b731-5951e32fbf79",
       "1d61035e-1fd3-435a-85a8-c44863f3a2dd"
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": "3d61035e-1fd3-435a-85a8-c44863f3a2dd",
+      "parent": null,
+      "author": "admin",
+      "created": "2022-04-02T20:10:00.000Z",
+      "modified": "2022-04-02T20:10:00.000Z",
+      "text": {
+        "data": "Comment 1",
+        "mime-type": "text/plain"
+      }
+    },
+    {
+      "id": "4d61035e-1fd3-435a-85a8-c44863f3a2dd",
+      "parent": "3d61035e-1fd3-435a-85a8-c44863f3a2dd",
+      "author": "admin",
+      "created": "2022-04-02T20:10:00.000Z",
+      "modified": "2022-04-02T20:10:00.000Z",
+      "text": {
+        "data": "Comment 1.1",
+        "mime-type": "text/plain"
+      }
+    }
+  ]
 }
