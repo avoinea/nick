@@ -31,10 +31,6 @@
     "test": "AUTH_RATE_LIMIT=1000 jest --passWithNoTests",
     "preinstall": "if [ -f $(pwd)/node_modules/.bin/missdev ]; then pnpm develop; else pnpm develop:npx; fi"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true
-  },
   "engines": {
     "node": "^22 || ^24 || ^25"
   },
