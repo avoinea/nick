@@ -161,7 +161,7 @@ Content-Type: application/json
       "UID": "1a2123ba-14e8-4910-8e6b-c04a40d72a41",
       "owner": "admin",
       "relatedItems": [
-        "1a2123ba-14e8-4910-8e6b-c04a40d72a41"
+        "32215c67-86de-462a-8cc0-eabcd2b39c26"
       ],
       "layout": "view",
       "is_folderish": true,
