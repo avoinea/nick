@@ -8,6 +8,11 @@ Content-Type: application/json
     "title": "Content Types"
   },
   {
+    "@id": "http://localhost:8080/@controlpanels/form",
+    "group": "General",
+    "title": "Form"
+  },
+  {
     "@id": "http://localhost:8080/@controlpanels/language",
     "group": "General",
     "title": "Language"

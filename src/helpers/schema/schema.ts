@@ -5,6 +5,7 @@
 
 // External imports
 import { mapValues } from 'es-toolkit/object';
+import { isUndefined } from 'es-toolkit/compat';
 
 // Internal imports
 import { Fieldset, Property, Schema, Request } from '../../types';
@@ -92,4 +93,20 @@ export function translateSchema(schema: Schema, req: Request): Schema {
       description: req.i18n(property.description),
     })),
   };
+}
+
+/**
+ * Format schema to html
+ * @method schemaToHtml
+ * @param {Schema} schema Schema object.
+ * @param {any} data Data of the schema.
+ * @returns {string} Schema in html schema.
+ */
+export function schemaToHtml(schema: Schema, data: any): string {
+  return schema.fieldsets
+    .map(
+      (fieldset) =>
+        `<table>${fieldset.id === 'default' ? '' : `<tr><th colspan="2">${fieldset.title}</th>`}</tr>${fieldset.fields.map((field) => `<tr><th>${schema.properties?.[field].title || ''}</th><td>${isUndefined(data[field]) ? '' : data[field]}</td></tr>`).join('\n')}</table>`,
+    )
+    .join('\n');
 }

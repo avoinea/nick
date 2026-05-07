@@ -5,12 +5,7 @@ const login = await cli.login({
   data: { login: 'admin', password: 'admin' },
 });
 
-const { data } = await cli.postForm({
+const { data } = await cli.getFormData({
   token: login.data.token,
-  data: {
-    block_id: '669530d8-d319-48cc-ad4f-cd690ab7e472',
-    data: {
-      myfield: 'Lorem Ipsum',
-    },
-  },
+  block_id: '6e2235ca-b70b-4e88-bdd9-8cba9838d52c',
 });

@@ -1,0 +1,26 @@
+{
+  "id": "form",
+  "title:i18n": "Form",
+  "group": "General",
+  "schema": {
+    "fieldsets": [
+      {
+        "fields": ["mail_template"],
+        "id": "default",
+        "title": "Default"
+      }
+    ],
+    "properties": {
+      "mail_template": {
+        "title:i18n": "Mail Template",
+        "description:i18n": "This is the mail template to be used when sending an email to the admin or the user. Variables like lang, title, header, footer, admin_info and fields can be used.",
+        "type": "string",
+        "widget": "textarea"
+      }
+    },
+    "required": []
+  },
+  "data": {
+    "mail_template": "<!doctype HTML>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"${lang}\" xml:lang=\"${lang}\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n    <title>${title}</title>\n  </head>\n  <body>\n    ${header}\n    ${admin_info}\n    ${fields}\n    ${footer}\n  </body>\n</html>"
+  }
+}

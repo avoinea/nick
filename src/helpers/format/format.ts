@@ -3,6 +3,9 @@
  * @module helpers/format/format
  */
 
+// External imports
+import { isUndefined } from 'es-toolkit/compat';
+
 /**
  * Format size
  * @method formatSize
@@ -29,4 +32,17 @@ export function formatAttribute(attribute: string): string {
         .split('.')
         .map((part) => `"${part}"`)
         .join('.');
+}
+
+/**
+ * Format template
+ * @method formatTemplate
+ * @param {string} template Input template.
+ * @param {object} data Data variables.
+ * @returns {string} Formatted template.
+ */
+export function formatTemplate(template: string, data: any): string {
+  return template.replace(/\${(\w+)}/g, (match, key) => {
+    return data[key] !== undefined ? data[key] : match;
+  });
 }

@@ -960,6 +960,13 @@ msgctxt "Profiles|Core|Catalog"
 msgid "Folder-like"
 msgstr "Type-conteneur"
 
+#. Default: "Form"
+#: src/profiles/core/upgrades/1003/controlpanels/form.json:3
+#: src/profiles/core/controlpanels/form.json:3
+msgctxt "Profiles|Core|Upgrades|1003|Controlpanels|Form"
+msgid "Form"
+msgstr ""
+
 #. Default: "From and message are required fields."
 #: src/routes/email/email.ts:67
 #: src/routes/email/email.ts:114
@@ -1224,6 +1231,13 @@ msgctxt "Profiles|Core|Controlpanels|Mail"
 msgid "Mail"
 msgstr "Envoi de courriels"
 
+#. Default: "Mail Template"
+#: src/profiles/core/upgrades/1003/controlpanels/form.json:15
+#: src/profiles/core/controlpanels/form.json:15
+msgctxt "Profiles|Core|Upgrades|1003|Controlpanels|Form"
+msgid "Mail Template"
+msgstr ""
+
 #. Default: "Manage Preferences"
 #: src/profiles/core/permissions.json:22
 msgctxt "Profiles|Core|Permissions"
@@ -1378,6 +1392,12 @@ msgstr ""
 msgctxt "Profiles|Core|Catalog"
 msgid "No"
 msgstr "Non"
+
+#. Default: "No data is submitted."
+#: src/routes/form/form.ts:106
+msgctxt "Routes|Form"
+msgid "No data is submitted."
+msgstr ""
 
 #. Default: "None"
 #: src/content_rules/conditions/workflow_state.ts:18
@@ -1605,6 +1625,13 @@ msgstr "Prompt est un champ obligatoire."
 msgctxt "Profiles|Ai|Controlpanels"
 msgid "Prompts"
 msgstr "Prompts"
+
+#. Default: "Provided block id is not valid."
+#: src/routes/form/form.ts:48
+#: src/routes/form/form.ts:99
+msgctxt "Routes|Form"
+msgid "Provided block id is not valid."
+msgstr ""
 
 #. Default: "Publish"
 #: src/profiles/core/workflows.json:47
@@ -2287,6 +2314,13 @@ msgstr ""
 msgctxt "Profiles|Core|Controlpanels|Site"
 msgid "This is the contents of the robots.txt file."
 msgstr "Ceci est le contenu du fichier robots.txt."
+
+#. Default: "This is the mail template to be used when sending an email to the admin or the user. Variables like lang, title, header, footer, admin_info and fields can be used."
+#: src/profiles/core/upgrades/1003/controlpanels/form.json:16
+#: src/profiles/core/controlpanels/form.json:16
+msgctxt "Profiles|Core|Upgrades|1003|Controlpanels|Form"
+msgid "This is the mail template to be used when sending an email to the admin or the user. Variables like lang, title, header, footer, admin_info and fields can be used."
+msgstr ""
 
 #. Default: "This name will be displayed in the URL."
 #: src/profiles/core/behaviors/short_name.json:15

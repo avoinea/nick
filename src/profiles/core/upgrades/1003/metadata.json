@@ -2,5 +2,6 @@
   "id": "@robgietema/nick:core",
   "title": "Nick Core",
   "description": "Core functionality of Nick",
-  "version": 1003
+  "version": 1003,
+  "upgrade": "Add commenting permissions and roles."
 }

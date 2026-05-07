@@ -1,1 +1,1 @@
-HTTP/1.1 200 No Content
+HTTP/1.1 204 No Content

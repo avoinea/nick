@@ -118,6 +118,7 @@
 - Add depth option to navigation endpoint @robgietema
 - Add commenting @robgietema
 - Add fields vocabulary @robgietema
+- Add form support @robgietema
 
 ### Bugfix
 
