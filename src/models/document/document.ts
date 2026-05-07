@@ -1024,11 +1024,17 @@ export class Document extends Model {
    * @param {Knex.Transaction} trx Transaction object.
    * @return {Promise<string[]>} List of documents.
    */
-  async isReferencing(trx?: Knex.Transaction): Promise<string[]> {
+  async isReferencing(trx?: Knex.Transaction): Promise<any[]> {
     const self: any = this;
 
+    // Get file fields
+    const relationListFields =
+      await self._type.getFactoryFields('Relation List');
+
     // Return allowed
-    return [];
+    return flatten(
+      relationListFields.map((field: string) => self.json[field] || []),
+    );
   }
 
   /**
