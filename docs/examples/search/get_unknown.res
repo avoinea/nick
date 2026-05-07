@@ -28,7 +28,7 @@ Content-Type: application/json
       "recurrence": null,
       "created": "2022-04-02T20:30:00.000Z",
       "effective": "2022-04-02T20:30:00.000Z",
-      "getObjSize": 192,
+      "getObjSize": 248,
       "image_field": "",
       "image_scales": {},
       "hasPreviewImage": false,
