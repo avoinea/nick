@@ -18,7 +18,7 @@ vi.mock('../../helpers/knex/knex', async () => {
   return {
     __esModule: true,
     ...originalModule,
-    getPostgresVersion: () => '14.4',
+    getPostgresVersion: () => '18.3',
   };
 });
 
