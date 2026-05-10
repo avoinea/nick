@@ -35,7 +35,7 @@ export class Group extends Model {
 
     return {
       _roles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'group.id',
@@ -47,7 +47,7 @@ export class Group extends Model {
         },
       },
       _users: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: User,
         join: {
           from: 'group.id',
@@ -59,7 +59,7 @@ export class Group extends Model {
         },
       },
       _documentRoles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'group.id',

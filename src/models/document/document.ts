@@ -104,7 +104,7 @@ export class Document extends Model {
 
     return {
       _owner: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {
           from: 'document.owner',
@@ -112,7 +112,7 @@ export class Document extends Model {
         },
       },
       _parent: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: Document,
         join: {
           from: 'document.parent',
@@ -120,7 +120,7 @@ export class Document extends Model {
         },
       },
       _children: {
-        relation: (Model as any).HasManyRelation,
+        relation: Model.HasManyRelation,
         modelClass: Document,
         join: {
           from: 'document.uuid',
@@ -128,7 +128,7 @@ export class Document extends Model {
         },
       },
       _catalog: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: Catalog,
         join: {
           from: 'document.uuid',
@@ -136,7 +136,7 @@ export class Document extends Model {
         },
       },
       _versions: {
-        relation: (Model as any).HasManyRelation,
+        relation: Model.HasManyRelation,
         modelClass: Version,
         join: {
           from: 'document.uuid',
@@ -144,7 +144,7 @@ export class Document extends Model {
         },
       },
       _type: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: Type,
         join: {
           from: 'document.type',
@@ -152,7 +152,7 @@ export class Document extends Model {
         },
       },
       _userRoles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'document.uuid',
@@ -165,7 +165,7 @@ export class Document extends Model {
         },
       },
       _groupRoles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'document.uuid',
@@ -178,7 +178,7 @@ export class Document extends Model {
         },
       },
       _contentRules: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: ContentRule,
         join: {
           from: 'document.uuid',
@@ -247,7 +247,9 @@ export class Document extends Model {
       trx,
       req,
     );
-    const restrictedPaths = (items as any).map((item: any) => item._path);
+    const restrictedPaths = items.map(
+      (item: InstanceType<typeof Catalog>) => item._path,
+    );
     self._restrictedChildren = (self._children || []).filter((child: any) =>
       restrictedPaths.includes(child.path),
     );
@@ -314,7 +316,7 @@ export class Document extends Model {
    * @returns {string} Id
    */
   setId(id: string | undefined, blacklist: string[]): void {
-    (this as any).id = uniqueId(id || '', blacklist);
+    this.id = uniqueId(id || '', blacklist);
   }
 
   /**
@@ -323,7 +325,7 @@ export class Document extends Model {
    * @returns {string} Title
    */
   getTitle(): string {
-    return (this as any).json.title;
+    return this.json.title;
   }
 
   /**
@@ -338,7 +340,7 @@ export class Document extends Model {
   static async replacePath(
     oldPath: string,
     newPath: string,
-    trx?: Knex.Transaction,
+    trx: Knex.Transaction,
   ): Promise<void> {
     const Redirect = models.get('Redirect');
     const documents: any = await this.fetchAll(
@@ -363,12 +365,12 @@ export class Document extends Model {
       .raw(
         `update document set path = regexp_replace(path, '^${oldPath}/(.*)$', '${newPath}/\\1', 'g') where path ~ '^${oldPath}/.*$'`,
       )
-      .transacting(trx as any);
+      .transacting(trx);
     await knex
       .raw(
         `update catalog set _path = regexp_replace(_path, '^${oldPath}/(.*)$', '${newPath}/\\1', 'g') where _path ~ '^${oldPath}/.*$'`,
       )
-      .transacting(trx as any);
+      .transacting(trx);
   }
 
   /**
@@ -634,7 +636,7 @@ export class Document extends Model {
   ): Promise<any[]> {
     const User = models.get('User');
     return await Promise.all(
-      (this as any).workflow_history.map(async (item: any) => {
+      this.workflow_history.map(async (item: any) => {
         const user = await User.fetchById(item.actor, {}, trx);
         return {
           ...item,
@@ -991,8 +993,8 @@ export class Document extends Model {
   async searchableText(): Promise<string> {
     // Return text from title, description and bodytext
     return compact([
-      (this as any).json.title,
-      (this as any).json.description,
+      this.json.title,
+      this.json.description,
       await this.getBodytext(),
     ]).join(' ');
   }
@@ -1003,7 +1005,7 @@ export class Document extends Model {
    * @return {number} Object size
    */
   getObjSize(): number {
-    return Buffer.byteLength(JSON.stringify((this as any).json), 'utf8');
+    return Buffer.byteLength(JSON.stringify(this.json), 'utf8');
   }
 
   /**
@@ -1030,7 +1032,7 @@ export class Document extends Model {
    * @return {Array} List of creators
    */
   listCreators(): string[] {
-    return [(this as any).owner];
+    return [this.owner];
   }
 
   /**
@@ -1238,7 +1240,7 @@ export class Document extends Model {
    * @method reindexChildren
    * @param {Knex.Transaction} trx Transaction object.
    */
-  async reindexChildren(trx?: Knex.Transaction): Promise<any> {
+  async reindexChildren(trx: Knex.Transaction): Promise<any> {
     const self: InstanceType<typeof Document> = this;
     return mapAsync(
       self._children,
@@ -1251,7 +1253,7 @@ export class Document extends Model {
    * @method indexChildren
    * @param {Knex.Transaction} trx Transaction object.
    */
-  async indexChildren(trx?: Knex.Transaction): Promise<any> {
+  async indexChildren(trx: Knex.Transaction): Promise<any> {
     const self: InstanceType<typeof Document> = this;
     return mapAsync(
       self._children,
@@ -1264,7 +1266,7 @@ export class Document extends Model {
    * @method reindex
    * @param {Knex.Transaction} trx Transaction object.
    */
-  async reindex(trx?: Knex.Transaction): Promise<any> {
+  async reindex(trx: Knex.Transaction): Promise<any> {
     return this.index(trx, false);
   }
 
@@ -1274,7 +1276,7 @@ export class Document extends Model {
    * @param {Knex.Transaction} trx Transaction object.
    * @param {boolean} insert Insert or update.
    */
-  async index(trx?: Knex.Transaction, insert = true): Promise<void> {
+  async index(trx: Knex.Transaction, insert = true): Promise<void> {
     const self: InstanceType<typeof Document> = this;
     let fields: any = {};
 
@@ -1349,7 +1351,7 @@ export class Document extends Model {
             .join(', ')});`,
           Object.values(fields).map((field: any) => field.value),
         )
-        .transacting(trx as any);
+        .transacting(trx);
     } else {
       // Insert into catalog
       await knex
@@ -1362,7 +1364,7 @@ export class Document extends Model {
             .join(', ')} WHERE document = '${self.uuid}';`,
           Object.values(fields).map((field: any) => field.value),
         )
-        .transacting(trx as any);
+        .transacting(trx);
     }
   }
 

@@ -54,6 +54,7 @@ export const move_item = {
     trx: Knex.Transaction,
   ) => {
     const Document = models.get('Document');
+    const Version = models.get('Version');
     await mapAsync(params.target_folder, async (targetFolder: Reference) => {
       // Get target parent
       const targetParent = await Document.fetchOne({ path: targetFolder.path });
@@ -98,9 +99,9 @@ export const move_item = {
         await document.fetchRelated('_versions', trx);
 
         // Get all file uuids from all versions and all fields
-        const files = uniq(
+        const files: string[] = uniq(
           flattenDeep(
-            document._versions.map((version: any) => [
+            document._versions.map((version: InstanceType<typeof Version>) => [
               ...fileFields.map((field: string) => version.json[field].uuid),
               ...imageFields.map((field: string) => [
                 version.json[field].uuid,
@@ -113,7 +114,7 @@ export const move_item = {
         );
 
         // Remove files
-        await mapAsync(files, async (file: any) => await removeFile(file));
+        await mapAsync(files, async (file: string) => await removeFile(file));
       }
 
       // Get parent

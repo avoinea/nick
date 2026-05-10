@@ -239,11 +239,11 @@ export async function handleBlockReferences(
     href: BlockHref,
     trx: Knex.Transaction,
   ): Promise<BlockHref> => {
-    const target = (await Catalog.fetchOne(
+    const target: InstanceType<typeof Catalog> = await Catalog.fetchOne(
       { _path: href['@id'] },
       {},
       trx,
-    )) as any;
+    );
     if (target) {
       return {
         ...href,
@@ -304,8 +304,7 @@ export async function getComponents(
   trx: Knex.Transaction,
   expand: string[],
 ): Promise<Record<string, any>> {
-  const components = {} as any;
-
+  const components: { [key: string]: any } = {};
   // Get base url
   const baseUrl = getUrl(req);
 

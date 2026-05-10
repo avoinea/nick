@@ -13,13 +13,17 @@ import { mapAsync } from '../../helpers/utils/utils';
 import models from '../../models';
 
 export const handler = async (req: Request, trx: Knex.Transaction) => {
+  const Document = models.get('Document');
   await req.document.fetchRelated('_catalog', trx);
 
   if (req.document._children) {
-    await mapAsync(req.document._children, async (child: any) => {
-      await child.fetchRelated('_catalog', trx);
-      await child.fetchRelationLists(trx);
-    });
+    await mapAsync(
+      req.document._children,
+      async (child: InstanceType<typeof Document>) => {
+        await child.fetchRelated('_catalog', trx);
+        await child.fetchRelationLists(trx);
+      },
+    );
   }
 
   // Get base url

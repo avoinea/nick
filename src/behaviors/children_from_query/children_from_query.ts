@@ -4,7 +4,7 @@
  */
 
 // Type imports
-import type { Request } from '../../types';
+import type { QueryString, Request } from '../../types';
 
 // External imports
 import { Knex } from 'knex';
@@ -16,7 +16,7 @@ import models from '../../models';
 interface DocumentType {
   id: string;
   json: {
-    query: string;
+    query: QueryString;
   };
   _children?: any[];
 }
@@ -42,7 +42,7 @@ export const children_from_query = {
     const Document = models.get('Document');
     const query = await querystringToQuery(this.json.query, '/', req, trx);
     let items = await Catalog.fetchAllRestricted(query[0], query[1], trx, req);
-    const uuids = items.map((item: any) => item.UID);
+    const uuids = items.map((item: InstanceType<typeof Catalog>) => item.UID);
     items = await Document.fetchAll(
       {
         uuid: ['=', uuids],

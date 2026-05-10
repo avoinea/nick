@@ -42,7 +42,7 @@ export class ContentRule extends Model {
 
     return {
       _documents: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Document,
         join: {
           from: 'content_rule.id',

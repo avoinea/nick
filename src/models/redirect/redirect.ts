@@ -34,8 +34,8 @@ export class Redirect extends Model {
     const Document = models.get('Document');
     return {
       _document: {
-        relation: (Model as any).BelongsToOneRelation,
-        modelClass: Document as any,
+        relation: Model.BelongsToOneRelation,
+        modelClass: Document,
         join: {
           from: 'redirect.document',
           to: 'document.uuid',

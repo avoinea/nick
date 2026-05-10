@@ -18,6 +18,10 @@ import type { Schema } from '../../types';
  * @extends Model
  */
 export class Behavior extends Model {
+  // Declare properties
+  declare id: string;
+  declare schema: Schema;
+
   static collection: (typeof Model)['collection'] =
     BehaviorCollection as unknown as (typeof Model)['collection'];
 
@@ -28,7 +32,7 @@ export class Behavior extends Model {
    * @returns {Promise<Schema>} Schema.
    */
   async fetchSchema(trx?: Knex.Transaction): Promise<Schema> {
-    const schema = (this as any).schema;
+    const schema = this.schema;
 
     if (schema.behaviors) {
       const behaviors = await Behavior.fetchAll(
@@ -49,7 +53,7 @@ export class Behavior extends Model {
           data: await behaviors.fetchSchema(trx),
         },
         {
-          name: (this as any).id,
+          name: this.id,
           data: schema,
         },
       );

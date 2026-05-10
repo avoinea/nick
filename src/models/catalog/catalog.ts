@@ -29,6 +29,7 @@ export class Catalog extends Model {
   static idColumn: string = 'document';
 
   // Declare properties
+  declare _path: string;
   declare similarity: number;
   declare path: string;
   declare Type: string;
@@ -39,6 +40,8 @@ export class Catalog extends Model {
   declare modified: string;
   declare end: string;
   declare recurrence: string;
+  declare image_field: string;
+  declare image_scales: any;
 
   /**
    * Returns JSON data.
@@ -127,9 +130,7 @@ export class Catalog extends Model {
       {
         select: [
           '*',
-          (this as any)
-            .knex()
-            .raw(`1 - (_embedding <=> '${embedding}') AS similarity`),
+          this.knex().raw(`1 - (_embedding <=> '${embedding}') AS similarity`),
         ],
         order: { column: 'similarity', reverse: true },
         limit,

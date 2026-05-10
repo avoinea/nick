@@ -87,10 +87,10 @@ export function translateSchema(schema: Schema, req: Request): Schema {
       ...fieldset,
       title: req.i18n(fieldset.title),
     })),
-    properties: mapValues(schema.properties as any, (property: any) => ({
+    properties: mapValues(schema.properties as any, (property: Property) => ({
       ...property,
       title: req.i18n(property.title),
-      description: req.i18n(property.description),
+      description: req.i18n(property.description || ''),
     })),
   };
 }

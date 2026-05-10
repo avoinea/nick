@@ -4,6 +4,6 @@ import { Type } from './type';
 describe('Type', () => {
   it('should cache schema', async () => {
     const type = await Type.fetchById('Page');
-    await (type as any).cacheSchema();
+    await type.cacheSchema();
   });
 });

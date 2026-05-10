@@ -30,7 +30,7 @@ export async function availableLanguages(
 
   // Fetch settings
   const controlpanel = await Controlpanel.fetchById('language', {}, trx);
-  const settings = (controlpanel as any).data;
+  const settings = controlpanel.data;
 
   // Return languages
   return objectToVocabulary(pick(languages, settings.available_languages));

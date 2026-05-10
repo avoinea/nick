@@ -55,6 +55,10 @@ export class Model extends mixin(ObjectionModel, [
 ]) {
   static collection = Collection;
 
+  // Declare properties.
+  declare id: string;
+  declare title: string;
+
   /**
    * Returns JSON data.
    * @method toJson
@@ -219,7 +223,7 @@ export class Model extends mixin(ObjectionModel, [
     trx?: Knex.Transaction,
   ): Promise<any> {
     const models = await this.buildQuery(where, options, trx);
-    return new (this as any).collection(models);
+    return new this.collection(models);
   }
 
   /**
@@ -311,7 +315,7 @@ export class Model extends mixin(ObjectionModel, [
     options: QueryOptions = {},
     trx?: Knex.Transaction,
   ): Promise<any> {
-    const relations = Object.keys((this as any).getRelations());
+    const relations = Object.keys(this.getRelations());
     const own = omit(data, relations);
     const model = await this.query(trx).insertAndFetch(own);
     await Promise.all(
@@ -320,7 +324,7 @@ export class Model extends mixin(ObjectionModel, [
           await Promise.all(
             data[related].map(
               async (item: any) =>
-                await (model as any).$relatedQuery(related, trx).relate(item),
+                await model.$relatedQuery(related, trx).relate(item),
             ),
           );
         }
@@ -395,7 +399,7 @@ export class Model extends mixin(ObjectionModel, [
     data: any,
     trx?: Knex.Transaction,
   ): Promise<any> {
-    const relationObjects = (this as any).getRelations();
+    const relationObjects = this.getRelations();
     const relations = Object.keys(relationObjects);
     const own = removeUndefined(omit(data, relations));
     let model;
@@ -407,12 +411,12 @@ export class Model extends mixin(ObjectionModel, [
     await Promise.all(
       relations.map(async (related: string) => {
         if (Array.isArray(data[related])) {
-          await (model as any).$relatedQuery(related, trx).unrelate();
+          await model.$relatedQuery(related, trx).unrelate();
           await Promise.all(
             data[related].map(async (item: any) => {
               // Ignore insert related errors
               try {
-                await (model as any).$relatedQuery(related, trx).relate(item);
+                await model.$relatedQuery(related, trx).relate(item);
               } catch (e) {
                 log.warn(`Can not relate ${item} to ${id}`);
               }
@@ -424,12 +428,12 @@ export class Model extends mixin(ObjectionModel, [
               if (data[related][key]) {
                 // Ignore insert related errors
                 try {
-                  await (model as any).$relatedQuery(related, trx).relate(key);
+                  await model.$relatedQuery(related, trx).relate(key);
                 } catch (e) {
                   log.warn(`Can not relate ${key} to ${id}`);
                 }
               } else {
-                await (model as any)
+                await model
                   .$relatedQuery(related, trx)
                   .unrelate()
                   .where({
@@ -453,8 +457,8 @@ export class Model extends mixin(ObjectionModel, [
    */
   getVocabularyTerm(req: Request): VocabularyTerm {
     return {
-      title: req.i18n((this as any).title),
-      token: (this as any).id,
+      title: req.i18n(this.title),
+      token: this.id,
     };
   }
 }

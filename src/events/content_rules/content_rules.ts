@@ -111,7 +111,7 @@ const userHandler = async (
   // Loop through content rules
   await mapAsync(assignedContentRules, async (contentRule: any) => {
     // Fetch document
-    const document = await Document.fetchByUuid(contentRule.document, {}, trx);
+    const document = await Document.fetchById(contentRule.document, {}, trx);
 
     // Check conditions
     const checks = await Promise.all(

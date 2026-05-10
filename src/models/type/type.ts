@@ -40,7 +40,7 @@ export class Type extends Model {
     const Workflow = models.get('Workflow');
     return {
       _workflow: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: Workflow,
         join: {
           from: 'type.workflow',

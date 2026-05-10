@@ -50,14 +50,14 @@ const intl = zipObject(
 // Export middleware
 export async function i18n(
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction,
 ): Promise<void> {
   const Controlpanel = models.get('Controlpanel');
 
   // Fetch settings
   const controlpanel = await Controlpanel.fetchById('language');
-  const settings = (controlpanel as any).data;
+  const settings = controlpanel.data;
 
   req.i18n = (id: string, ...rest: any[]) => {
     // Check if id is specified
@@ -76,10 +76,7 @@ export async function i18n(
     }
 
     // Translate message
-    return (intl[language] as any).formatMessage(
-      { id, defaultMessage: id },
-      ...rest,
-    );
+    return intl[language].formatMessage({ id, defaultMessage: id }, ...rest);
   };
   next();
 }

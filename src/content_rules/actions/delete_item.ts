@@ -32,10 +32,10 @@ export const delete_item = {
     type: 'object',
   },
   handler: async (
-    params: Params,
+    _params: Params,
     document: any,
-    user: any,
-    contentRule: any,
+    _user: any,
+    _contentRule: any,
     trx: Knex.Transaction,
   ) => {
     await document.fetchRelated('_type', trx);
@@ -50,7 +50,7 @@ export const delete_item = {
       await document.fetchRelated('_versions', trx);
 
       // Get all file uuids from all versions and all fields
-      const files = uniq(
+      const files: string[] = uniq(
         flattenDeep(
           document._versions.map((version: any) => [
             ...fileFields.map((field: string) => version.json[field].uuid),
@@ -65,7 +65,7 @@ export const delete_item = {
       );
 
       // Remove files
-      await mapAsync(files, async (file: any) => await removeFile(file));
+      await mapAsync(files, async (file: string) => await removeFile(file));
     }
 
     // Get parent

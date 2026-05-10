@@ -26,6 +26,7 @@ export class Version extends Model {
   declare _actor: any;
   declare json: {
     changeNote: string;
+    [key: string]: any;
   };
 
   // Set relation mappings
@@ -33,7 +34,7 @@ export class Version extends Model {
     const User = models.get('User');
     return {
       _actor: {
-        relation: (Model as any).BelongsToOneRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {
           from: 'version.actor',

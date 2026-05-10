@@ -16,9 +16,9 @@ export const up = async (knex: Knex): Promise<void> => {
   // Create blob dir if it doesn’t exist
   if (
     config.settings.blobs === 'file' &&
-    !existsSync((config as any).settings.blobsDir)
+    !existsSync(config.settings.blobsDir)
   ) {
-    mkdirSync((config as any).settings.blobsDir, { recursive: true });
+    mkdirSync(config.settings.blobsDir, { recursive: true });
   }
   await knex.schema.createTable('document', (table: Knex.TableBuilder) => {
     table.uuid('uuid').primary();
@@ -128,8 +128,8 @@ export const down = async (knex: Knex): Promise<void> => {
   await knex.schema.dropTable('version');
   await knex.schema.dropTable('document');
   if (config.settings.blobs === 'file') {
-    readdirSync((config as any).settings.blobsDir).forEach((file) =>
-      rmSync(`${(config as any).settings.blobsDir}/${file}`),
+    readdirSync(config.settings.blobsDir).forEach((file) =>
+      rmSync(`${config.settings.blobsDir}/${file}`),
     );
   }
 };

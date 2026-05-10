@@ -35,7 +35,7 @@ export class User extends Model {
     const Group = models.get('Group');
     return {
       _roles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'user.id',
@@ -47,7 +47,7 @@ export class User extends Model {
         },
       },
       _groups: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Group,
         join: {
           from: 'user.id',
@@ -59,7 +59,7 @@ export class User extends Model {
         },
       },
       _documentRoles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'user.id',

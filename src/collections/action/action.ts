@@ -33,10 +33,11 @@ export class ActionCollection extends Collection<ActionModel> {
    * @returns {Promise<Json>} JSON object grouped by category.
    */
   async toJson(req: Request): Promise<Json> {
+    // const  = models.get('Catalog');
     return mapValues(
       groupBy(
-        ((await super.toJson(req)) as any[]).filter((model) =>
-          req.permissions.includes(model.permission),
+        ((await super.toJson(req)) as unknown as ActionModel[]).filter(
+          (model) => req.permissions.includes(model.permission),
         ),
         (model) => model.category,
       ),
@@ -45,6 +46,6 @@ export class ActionCollection extends Collection<ActionModel> {
           ...omit(action, ['order', 'permission', 'category']),
           url: action.url ? action.url.replace('$username', req.user.id) : null,
         })),
-    );
+    ) as unknown as Json;
   }
 }

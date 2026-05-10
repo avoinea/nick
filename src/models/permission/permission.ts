@@ -18,7 +18,7 @@ export class Permission extends Model {
     const Role = models.get('Role');
     return {
       _roles: {
-        relation: (Model as any).ManyToManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Role,
         join: {
           from: 'permission.id',
