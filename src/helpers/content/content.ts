@@ -305,6 +305,7 @@ export async function getComponents(
   expand: string[],
 ): Promise<Record<string, any>> {
   const components: { [key: string]: any } = {};
+
   // Get base url
   const baseUrl = getUrl(req);
 
