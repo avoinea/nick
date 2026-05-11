@@ -434,8 +434,8 @@ msgid "Comment"
 msgstr ""
 
 #. Default: "Comment does not exist."
-#: src/routes/comments/comments.ts:212
-#: src/routes/comments/comments.ts:268
+#: src/routes/comments/comments.ts:211
+#: src/routes/comments/comments.ts:266
 msgctxt "Routes|Comments"
 msgid "Comment does not exist."
 msgstr ""
@@ -2063,7 +2063,7 @@ msgid "Text is required to add a comment."
 msgstr ""
 
 #. Default: "Text is required to modify a comment."
-#: src/routes/comments/comments.ts:230
+#: src/routes/comments/comments.ts:229
 msgctxt "Routes|Comments"
 msgid "Text is required to modify a comment."
 msgstr ""
@@ -2669,13 +2669,13 @@ msgid "You can’t delete system users."
 msgstr "Sistemskih uporabnikov ne morete izbrisati."
 
 #. Default: "You don’t have permission to delete this comment."
-#: src/routes/comments/comments.ts:279
+#: src/routes/comments/comments.ts:277
 msgctxt "Routes|Comments"
 msgid "You don’t have permission to delete this comment."
 msgstr ""
 
 #. Default: "You don’t have permission to edit this comment."
-#: src/routes/comments/comments.ts:223
+#: src/routes/comments/comments.ts:222
 msgctxt "Routes|Comments"
 msgid "You don’t have permission to edit this comment."
 msgstr ""
