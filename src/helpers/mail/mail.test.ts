@@ -32,7 +32,14 @@ describe('Mail', () => {
       sendMail: sendMailSpy,
     } as any);
 
-    await mail.sendMail({ from: 'test@example.com', to: 'recipient@example.com', subject: 'Test' }, {} as any);
+    await mail.sendMail(
+      {
+        from: 'test@example.com',
+        to: 'recipient@example.com',
+        subject: 'Test',
+      },
+      {} as any,
+    );
 
     expect(nodemailer.createTransport).toHaveBeenCalled();
     expect(sendMailSpy).toHaveBeenCalled();
@@ -54,7 +61,14 @@ describe('Mail', () => {
       pass: 'testpass',
     } as any);
 
-    await mail.sendMail({ from: 'test@example.com', to: 'recipient@example.com', subject: 'Test' }, {} as any);
+    await mail.sendMail(
+      {
+        from: 'test@example.com',
+        to: 'recipient@example.com',
+        subject: 'Test',
+      },
+      {} as any,
+    );
 
     expect(nodemailer.createTestAccount).toHaveBeenCalled();
     expect(nodemailer.createTransport).toHaveBeenCalled();
@@ -78,9 +92,18 @@ describe('Mail', () => {
     vi.spyOn(nodemailer, 'createTransport').mockReturnValue({
       sendMail: vi.fn().mockResolvedValue(info),
     } as any);
-    vi.spyOn(nodemailer, 'getTestMessageUrl').mockReturnValue('http://example.com/preview');
+    vi.spyOn(nodemailer, 'getTestMessageUrl').mockReturnValue(
+      'http://example.com/preview',
+    );
 
-    await mail.sendMail({ from: 'test@example.com', to: 'recipient@example.com', subject: 'Test' }, {} as any);
+    await mail.sendMail(
+      {
+        from: 'test@example.com',
+        to: 'recipient@example.com',
+        subject: 'Test',
+      },
+      {} as any,
+    );
 
     expect(nodemailer.getTestMessageUrl).toHaveBeenCalledWith(info);
   });
