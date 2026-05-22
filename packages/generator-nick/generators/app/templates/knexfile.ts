@@ -24,9 +24,6 @@ const knexSettings = {
     ],
     tableName: 'knex_migrations',
   },
-  seeds: {
-    directory: path.resolve(__dirname, './src/develop/nick/src/seeds'),
-  },
 };
 
 export default {
