@@ -31,15 +31,15 @@ const {
   TRUST_PROXY,
   BLOBS_DIR,
   LOCALES_DIR,
-  REGISTRYCONFIG,
 } = process.env;
 
 let config: any = {};
-if (fs.existsSync(`${process.cwd()}/config`)) {
+if (fs.existsSync(`${process.cwd()}/config.ts`)) {
   config = (await import(`${process.cwd()}/config`)).config;
 }
-const nickEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
-const nickRoot = path.dirname(nickEntry);
+const packageEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
+const packageRoot = path.dirname(packageEntry);
+
 /**
  * A model for the config.
  * @class Config
@@ -54,7 +54,7 @@ class Config {
    */
   constructor() {
     this.settings = {
-      nickRoot,
+      packageRoot,
       connection: {
         port: parseInt(DB_PORT || config.connection?.port || '5432'),
         host: DB_HOST || config.connection?.host || 'localhost',

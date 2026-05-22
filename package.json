@@ -11,8 +11,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./src/app.ts",
-      "require": "./src/app.ts"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     },
     "./*": {
       "import": "./*",

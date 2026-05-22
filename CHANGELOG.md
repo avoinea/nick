@@ -199,6 +199,7 @@
 - Fix markdown indexer bug @robgietema
 - Fix from address in email handlers @robgietema
 - Fix related items bug @robgietema
+- Bff fixes for Aurora @sneridagh
 
 ### Internal
 

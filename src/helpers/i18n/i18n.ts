@@ -4,14 +4,60 @@
  */
 
 // External imports
+import { createIntl, createIntlCache, IntlShape } from '@formatjs/intl';
+import { remove, zipObject } from 'es-toolkit/array';
 import { isObject, mapKeys } from 'es-toolkit/compat';
 import { mapValues } from 'es-toolkit/object';
+import fs from 'fs';
+
+// Internal imports
+import config from '../../helpers/config/config';
 
 /**
  * Node of an object
  * @typedef {*} Node
  */
-export type Node = any;
+type Node = any;
+
+// I18n cache and languages
+export let intl: Record<string, IntlShape> = {};
+export let languages: string[] = [];
+
+/**
+ * Initialize i18n.
+ * @method initializeI18n
+ */
+export function initializeI18n(): void {
+  // Get available language files
+  languages = remove(fs.readdirSync(`${config.settings.localesDir}`), (value) =>
+    value.endsWith('.json'),
+  ).map((value) => value.replace(/.json/, ''));
+
+  // Create i18n cache
+  const intlCache = zipObject(
+    languages,
+    languages.map(() => createIntlCache()),
+  ) as Record<string, any>;
+
+  // Load i18n files
+  intl = zipObject(
+    languages,
+    languages.map((language) =>
+      createIntl(
+        {
+          locale: language,
+          messages: JSON.parse(
+            fs.readFileSync(
+              `${config.settings.localesDir}/${language}.json`,
+              'utf8',
+            ),
+          ),
+        },
+        intlCache[language],
+      ),
+    ),
+  ) as Record<string, IntlShape>;
+}
 
 /**
  * Strip i18n

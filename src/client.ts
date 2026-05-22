@@ -13,6 +13,7 @@ import { NextFunction, Response } from 'express';
 import { content_rules } from './events/content_rules/content_rules';
 import config from './helpers/config/config';
 import { RequestException } from './helpers/error/error';
+import { initializeI18n } from './helpers/i18n/i18n';
 import { callHandler } from './helpers/handler/handler';
 import { i18n } from './middleware/i18n/i18n';
 import models from './models';
@@ -34,6 +35,7 @@ export class Client {
    * @returns {Client} New client object.
    */
   static initialize = ({ token: initToken, apiPath }: any): any => {
+    initializeI18n();
     const client = new Client() as any;
     const Document = models.get('Document');
 
