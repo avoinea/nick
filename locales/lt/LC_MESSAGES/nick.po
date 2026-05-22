@@ -1075,8 +1075,8 @@ msgid "Information about rights held in and over this item."
 msgstr "Informacija apie teises, turimas šiame elemente ir virš jo."
 
 #. Default: "Internal server error"
-#: src/app.ts:256
-#: src/app.ts:266
+#: src/app.ts:260
+#: src/app.ts:270
 msgctxt "App"
 msgid "Internal server error"
 msgstr "Vidinė serverio klaida"
@@ -2393,9 +2393,9 @@ msgid "Today"
 msgstr "Šiandien"
 
 #. Default: "Transaction error."
-#: src/client.ts:82
-#: src/app.ts:192
-#: src/app.ts:205
+#: src/client.ts:84
+#: src/app.ts:196
+#: src/app.ts:209
 msgctxt "Client"
 msgid "Transaction error."
 msgstr "Sandorio klaida."
