@@ -8,6 +8,7 @@ import type { ConfigSettings } from '../../types';
 
 // External imports
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 // Internal imports
@@ -33,11 +34,10 @@ const {
   REGISTRYCONFIG,
 } = process.env;
 
-// const config = REGISTRYCONFIG
-//   ? (await import(REGISTRYCONFIG)).nick
-//   : (await import(`${process.cwd()}/config`)).config;
-
-const config = {};
+let config: any = {};
+if (fs.existsSync(`${process.cwd()}/config`)) {
+  config = (await import(`${process.cwd()}/config`)).config;
+}
 const nickEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
 const nickRoot = path.dirname(nickEntry);
 /**
