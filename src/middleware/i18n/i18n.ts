@@ -16,11 +16,14 @@ import fs from 'fs';
 import config from '../../helpers/config/config';
 import models from '../../models';
 
+const localesDir = config.settings.localesDir;
+
 // Get available language files
-const languages = remove(
-  fs.readdirSync(`${config.settings.localesDir}`),
-  (value) => value.endsWith('.json'),
-).map((value) => value.replace(/.json/, ''));
+const languages = fs.existsSync(localesDir)
+  ? remove(fs.readdirSync(localesDir), (value) => value.endsWith('.json')).map(
+      (value) => value.replace(/.json/, ''),
+    )
+  : [];
 
 // Create i18n cache
 const intlCache = zipObject(
@@ -35,12 +38,11 @@ const intl = zipObject(
     createIntl(
       {
         locale: language,
-        messages: JSON.parse(
-          fs.readFileSync(
-            `${config.settings.localesDir}/${language}.json`,
-            'utf8',
-          ),
-        ),
+        messages: fs.existsSync(`${localesDir}/${language}.json`)
+          ? JSON.parse(
+              fs.readFileSync(`${localesDir}/${language}.json`, 'utf8'),
+            )
+          : {},
       },
       intlCache[language],
     ),

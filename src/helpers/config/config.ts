@@ -33,10 +33,13 @@ const {
   REGISTRYCONFIG,
 } = process.env;
 
-const config = REGISTRYCONFIG
-  ? (await import(REGISTRYCONFIG)).nick
-  : (await import(`${process.cwd()}/config`)).config;
+// const config = REGISTRYCONFIG
+//   ? (await import(REGISTRYCONFIG)).nick
+//   : (await import(`${process.cwd()}/config`)).config;
 
+const config = {}
+  const nickEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
+  const nickRoot = path.dirname(nickEntry);
 /**
  * A model for the config.
  * @class Config
@@ -51,6 +54,7 @@ class Config {
    */
   constructor() {
     this.settings = {
+      nickRoot,
       connection: {
         port: parseInt(DB_PORT || config.connection?.port || '5432'),
         host: DB_HOST || config.connection?.host || 'localhost',
