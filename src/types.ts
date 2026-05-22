@@ -241,6 +241,7 @@ export interface CachePolicy {
 }
 
 export type ConfigSettings = {
+  packageRoot: string;
   connection: {
     port: number;
     host: string;

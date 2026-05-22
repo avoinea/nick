@@ -8,6 +8,7 @@ import type { ConfigSettings } from '../../types';
 
 // External imports
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 // Internal imports
@@ -30,12 +31,14 @@ const {
   TRUST_PROXY,
   BLOBS_DIR,
   LOCALES_DIR,
-  REGISTRYCONFIG,
 } = process.env;
 
-const config = REGISTRYCONFIG
-  ? (await import(REGISTRYCONFIG)).nick
-  : (await import(`${process.cwd()}/config`)).config;
+let config: any = {};
+if (fs.existsSync(`${process.cwd()}/config.ts`)) {
+  config = (await import(`${process.cwd()}/config`)).config;
+}
+const packageEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
+const packageRoot = path.dirname(packageEntry);
 
 /**
  * A model for the config.
@@ -51,6 +54,7 @@ class Config {
    */
   constructor() {
     this.settings = {
+      packageRoot,
       connection: {
         port: parseInt(DB_PORT || config.connection?.port || '5432'),
         host: DB_HOST || config.connection?.host || 'localhost',

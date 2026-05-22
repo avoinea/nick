@@ -9,6 +9,16 @@
       "url": "https://robgietema.nl"
     }
   ],
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./*": {
+      "import": "./*",
+      "require": "./*"
+    }
+  },
   "license": "MIT",
   "version": "2.8.0",
   "repository": {
