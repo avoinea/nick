@@ -309,7 +309,6 @@ export type ConfigSettings = {
   };
   recyclebin: boolean;
   routes: boolean;
-  tasks: boolean;
   cache: {
     enabled: boolean;
     anonymousOnly: boolean;

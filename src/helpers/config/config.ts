@@ -12,8 +12,9 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 // Internal imports
-import events from '../../events';
+import userschema from '../../constants/userschema';
 
+// Exports
 export type ConfigType = InstanceType<typeof Config>;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -120,9 +121,7 @@ class Config {
         ),
       },
       recyclebin: config.recyclebin || false,
-      events: config.events || events,
       routes: config.routes || false,
-      tasks: config.tasks || false,
       cache: config.cache || {
         enabled: false,
         anonymousOnly: true,
@@ -186,7 +185,7 @@ class Config {
           },
         },
       },
-      userschema: config.userschema,
+      userschema: config.userschema || userschema,
     };
     if (!Config.instance) {
       Config.instance = this;

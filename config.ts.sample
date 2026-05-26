@@ -7,9 +7,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Internal imports
-import userschema from './src/constants/userschema';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const {
@@ -146,5 +143,4 @@ export const config = {
       },
     },
   },
-  userschema,
 };
