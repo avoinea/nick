@@ -247,6 +247,7 @@
 - Refactor vocabularies to use profile init @robgietema
 - Refactor middleware to use profile init @robgietema
 - Refactor seeds to use profile init @robgietema
+- Refactor behaviors to use profile init @robgietema
 
 ### Documentation
 

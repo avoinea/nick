@@ -239,7 +239,7 @@ export class Document extends Model {
     // Assign behaviors
     Object.assign(
       self,
-      ...Object.values(pick(behaviors, self._type.schema.behaviors)),
+      ...Object.values(pick(behaviors.behaviors, self._type.schema.behaviors)),
     );
   }
 

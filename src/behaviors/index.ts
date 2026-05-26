@@ -1,18 +1,45 @@
 /**
- * Point of contact for behaviors.
+ * Behaviors.
  * @module behaviors
- * @example import behaviors from './behaviors';
  */
 
-// Internal imports
-import { children_from_query } from './children_from_query/children_from_query';
-import { id_from_title } from './id_from_title/id_from_title';
-import config from '../helpers/config/config';
+// Type imports
+import type { Express } from 'express';
 
-const behaviors = {
-  children_from_query,
-  id_from_title,
-  ...('behaviors' in config.settings ? config.settings.behaviors : {}),
-};
+/**
+ * A behavior registry.
+ * @class Behaviors
+ */
+class Behaviors {
+  public behaviors: any;
+  static instance: Behaviors;
 
+  /**
+   * Construct a Behavior.
+   * @constructs Behaviors
+   */
+  constructor() {
+    this.behaviors = {};
+
+    if (!Behaviors.instance) {
+      Behaviors.instance = this;
+    }
+
+    return Behaviors.instance;
+  }
+
+  /**
+   * Register a behavior.
+   * @param {string} name The name of the behavior to register.
+   * @param {any} behavior The behavior to register.
+   */
+  register(name: string, behavior: any): void {
+    this.behaviors[name] = behavior;
+  }
+}
+
+// Create an instance of the Behavior registry
+const behaviors = new Behaviors();
+
+// Export the instance and all behaviors
 export default behaviors;

@@ -44,7 +44,7 @@ import { seedWorkflow } from '../../seeds/workflow/workflow';
 import vocabularies from '../../vocabularies';
 import { actions } from '../../vocabularies/actions/actions';
 import { availableLanguages } from '../../vocabularies/available-languages/available-languages';
-import { behaviors } from '../../vocabularies/behaviors/behaviors';
+import { behaviors as behaviorVocab } from '../../vocabularies/behaviors/behaviors';
 import { captchaProviders } from '../../vocabularies/captcha-providers/captcha-providers';
 import { fields } from '../../vocabularies/fields/fields';
 import { groups } from '../../vocabularies/groups/groups';
@@ -60,6 +60,11 @@ import { users } from '../../vocabularies/users/users';
 import { workflows } from '../../vocabularies/workflows/workflows';
 import { workflowStates } from '../../vocabularies/workflow-states/workflow-states';
 import { workflowTransitions } from '../../vocabularies/workflow-transitions/workflow-transitions';
+
+// Behaviors
+import behaviors from '../../behaviors';
+import { children_from_query } from '../../behaviors/children_from_query/children_from_query';
+import { id_from_title } from '../../behaviors/id_from_title/id_from_title';
 
 export function init(): void {
   // Register blocks
@@ -82,7 +87,7 @@ export function init(): void {
   // Register vocabularies
   vocabularies.register('actions', actions);
   vocabularies.register('availableLanguages', availableLanguages);
-  vocabularies.register('behaviors', behaviors);
+  vocabularies.register('behaviors', behaviorVocab);
   vocabularies.register('captchaProviders', captchaProviders);
   vocabularies.register('Fields', fields);
   vocabularies.register('groups', groups);
@@ -120,4 +125,8 @@ export function init(): void {
   seeds.register(seedAction);
   seeds.register(seedControlpanel);
   seeds.register(seedVocabulary);
+
+  // Register behaviors
+  behaviors.register('children_from_query', children_from_query);
+  behaviors.register('id_from_title', id_from_title);
 }
