@@ -9,14 +9,12 @@ import type { Knex } from 'knex';
 
 // External imports
 import { last } from 'es-toolkit/array';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 // Internal imports
-import config from '../src/helpers/config/config';
 import { fileExists } from '../src/helpers/fs/fs';
 import { stripI18n } from '../src/helpers/i18n/i18n';
 import { knex } from '../src/helpers/knex/knex';
+import { mapProfiles } from '../src/helpers/profiles/profiles';
 import { mapAsync } from '../src/helpers/utils/utils';
 import models from '../src/models';
 import { seedAction } from '../src/seeds/action/action';
@@ -65,14 +63,7 @@ async function main() {
   const Profile = models.get('Profile');
 
   try {
-    await mapAsync(config.settings.profiles, async (profile, index) => {
-      const [packageName, profileName] = profile.split(':');
-      const packageEntry = fileURLToPath(import.meta.resolve(packageName));
-      const profilePath = path.resolve(
-        path.dirname(packageEntry),
-        `./profiles/${profileName}`,
-      );
-
+    await mapProfiles(async (profilePath, index) => {
       if (await fileExists(`${profilePath}/metadata`)) {
         const metadata = stripI18n(await import(`${profilePath}/metadata`));
         const profile = await Profile.fetchOne({ id: metadata.id }, {}, trx);

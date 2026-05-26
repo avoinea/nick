@@ -126,6 +126,7 @@
 - Change format of system endpoint @robgietema
 - Profiles are now specified by package name and profile name @robgietema
 - Check accept header on returning content @robgietema
+- Add block registry @robgietema
 
 ### Bugfix
 

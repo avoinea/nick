@@ -26,6 +26,7 @@ import { v4 as uuid } from 'uuid';
 
 // Internal imports
 import models from '../';
+import blocks from '../../blocks';
 import { Model } from '../_model/_model';
 import behaviors from '../../behaviors';
 import { DocumentCollection } from '../../collections/document/document';
@@ -1608,14 +1609,9 @@ END:VEVENT`;
 
     return (self.json.blocks_layout?.items || [])
       .map((block: any) => {
-        switch (self.json.blocks[block]['@type']) {
-          case 'title':
-            return `# ${self.json.title}\n\n`;
-          case 'slate':
-            return slateToMarkdown(self.json.blocks[block].value);
-          default:
-            return '';
-        }
+        return blocks
+          .get(self.json.blocks[block]['@type'])
+          .toMarkdown(self.json.blocks[block], self);
       })
       .join('');
   }

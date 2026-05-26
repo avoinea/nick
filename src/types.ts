@@ -23,6 +23,10 @@ export type Params = { [key: string]: any };
 
 export type Callback = (...args: any[]) => any;
 
+export type Block = {
+  toMarkdown: (self: any, document: any) => string;
+};
+
 export interface DeleteInfo {
   actor: string;
   time: string;

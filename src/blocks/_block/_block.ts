@@ -1,0 +1,16 @@
+/**
+ * Default block.
+ * @module blocks/_block/_block
+ */
+
+export const block = {
+  /**
+   * Convert to markdown.
+   * @param self The block instance.
+   * @param document The document instance.
+   * @returns The markdown string.
+   */
+  toMarkdown: (_self: any, _document: any) => {
+    return '';
+  },
+};

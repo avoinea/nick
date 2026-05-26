@@ -37,6 +37,7 @@ export default [
       sourceType: 'module',
       parserOptions: {
         parser: '@babel/eslint-parser',
+        tsconfigRootDir: __dirname,
       },
     },
   },

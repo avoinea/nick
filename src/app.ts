@@ -21,8 +21,9 @@ import { applyCache } from './helpers/cache/cache';
 import config from './helpers/config/config';
 import { RequestException } from './helpers/error/error';
 import { callHandler } from './helpers/handler/handler';
-import { initializeI18n } from './helpers/i18n/i18n';
+import { initI18n } from './helpers/i18n/i18n';
 import { log } from './helpers/log/log';
+import { initProfiles } from './helpers/profiles/profiles';
 import { regExpEscape } from './helpers/utils/utils';
 import { accessLogger } from './middleware/access-logger/access-logger';
 import { cors } from './middleware/cors/cors';
@@ -31,6 +32,9 @@ import { removeZopeVhosting } from './middleware/volto/volto';
 import models from './models';
 import globalRoutes from './routes';
 import globalTasks from './tasks';
+
+// Init profiles
+await initProfiles();
 
 const localRoutes = config.settings.routes
   ? (await import(`${process.cwd()}/src/routes`)).default
@@ -44,7 +48,7 @@ const routes = [...localRoutes, ...globalRoutes];
 const tasks = [...localTasks, ...globalTasks];
 
 // Initialize i18n
-initializeI18n();
+initI18n();
 
 // Run scheduled tasks
 tasks.forEach((task) => {

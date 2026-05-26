@@ -25,9 +25,9 @@ export let languages: string[] = [];
 
 /**
  * Initialize i18n.
- * @method initializeI18n
+ * @method initI18n
  */
-export function initializeI18n(): void {
+export function initI18n(): void {
   // Get available language files
   languages = remove(fs.readdirSync(`${config.settings.localesDir}`), (value) =>
     value.endsWith('.json'),
