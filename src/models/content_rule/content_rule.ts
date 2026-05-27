@@ -24,6 +24,7 @@ export class ContentRule extends Model {
   declare id: string;
   declare title: string;
   declare description: string;
+  declare bubble: boolean;
   declare enabled: boolean;
   declare event: string;
   declare _documents: any[];

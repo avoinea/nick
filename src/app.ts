@@ -125,7 +125,7 @@ middleware.use(app);
 app.set('trust proxy', config.settings.rateLimit.trustProxy || 1);
 
 // Add routes
-routes.map((route: Route) => {
+routes.routes.map((route: Route) => {
   app[route.op](
     `${regExpEscape(config.settings.prefix)}{*path}${route.view}`,
     route.middleware ||

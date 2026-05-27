@@ -81,6 +81,46 @@ import { user_group } from '../../content_rules/conditions/user_group';
 import { user_role } from '../../content_rules/conditions/user_role';
 import { workflow_state } from '../../content_rules/conditions/workflow_state';
 
+// Routes
+import routes from '../../routes';
+import actionsRoutes from '../../routes/actions/actions';
+import aiRoutes from '../../routes/ai/ai';
+import aliasesRoutes from '../../routes/aliases/aliases';
+import authenticationRoutes from '../../routes/authentication/authentication';
+import breadcrumbsRoutes from '../../routes/breadcrumbs/breadcrumbs';
+import catalogRoutes from '../../routes/catalog/catalog';
+import commentsRoutes from '../../routes/comments/comments';
+import contentRoutes from '../../routes/content/content';
+import contentRulesRoutes from '../../routes/content_rules/content_rules';
+import contextnavigationRoutes from '../../routes/contextnavigation/contextnavigation';
+import controlpanelsRoutes from '../../routes/controlpanels/controlpanels';
+import databaseRoutes from '../../routes/database/database';
+import emailRoutes from '../../routes/email/email';
+import formRoutes from '../../routes/form/form';
+import groupsRoutes from '../../routes/groups/groups';
+import historyRoutes from '../../routes/history/history';
+import inheritRoutes from '../../routes/inherit/inherit';
+import linkintegrityRoutes from '../../routes/linkintegrity/linkintegrity';
+import lockRoutes from '../../routes/lock/lock';
+import navigationRoutes from '../../routes/navigation/navigation';
+import navrootRoutes from '../../routes/navroot/navroot';
+import nickRoutes from '../../routes/nick/nick';
+import principalsRoutes from '../../routes/principals/principals';
+import querystringRoutes from '../../routes/querystring/querystring';
+import recyclebinRoutes from '../../routes/recyclebin/recyclebin';
+import relatedRoutes from '../../routes/related/related';
+import rolesRoutes from '../../routes/roles/roles';
+import searchRoutes from '../../routes/search/search';
+import sharingRoutes from '../../routes/sharing/sharing';
+import siteRoutes from '../../routes/site/site';
+import systemRoutes from '../../routes/system/system';
+import translationsRoutes from '../../routes/translations/translations';
+import typesRoutes from '../../routes/types/types';
+import usersRoutes from '../../routes/users/users';
+import userschemaRoutes from '../../routes/userschema/userschema';
+import vocabulariesRoutes from '../../routes/vocabularies/vocabularies';
+import workflowRoutes from '../../routes/workflow/workflow';
+
 export function init(): void {
   // Register blocks
   blocks.register('title', title);
@@ -145,7 +185,7 @@ export function init(): void {
   behaviors.register('children_from_query', children_from_query);
   behaviors.register('id_from_title', id_from_title);
 
-  // Register content rules
+  // Register content rules actions
   contentRules.registerAction('copy_item', copy_item);
   contentRules.registerAction('delete_item', delete_item);
   contentRules.registerAction('logger', logger);
@@ -154,9 +194,49 @@ export function init(): void {
   contentRules.registerAction('transition_workflow', transition_workflow);
   contentRules.registerAction('version_item', version_item);
 
+  // Register content rules actions
   contentRules.registerCondition('content_type', content_type);
   contentRules.registerCondition('file_extension', file_extension);
   contentRules.registerCondition('user_group', user_group);
   contentRules.registerCondition('user_role', user_role);
   contentRules.registerCondition('workflow_state', workflow_state);
+
+  // Routes
+  routes.register(contentRoutes); // Register content routes first as they are the fallback
+  routes.register(actionsRoutes);
+  routes.register(aiRoutes);
+  routes.register(aliasesRoutes);
+  routes.register(authenticationRoutes);
+  routes.register(breadcrumbsRoutes);
+  routes.register(catalogRoutes);
+  routes.register(commentsRoutes);
+  routes.register(contentRulesRoutes);
+  routes.register(contextnavigationRoutes);
+  routes.register(controlpanelsRoutes);
+  routes.register(databaseRoutes);
+  routes.register(emailRoutes);
+  routes.register(formRoutes);
+  routes.register(groupsRoutes);
+  routes.register(historyRoutes);
+  routes.register(inheritRoutes);
+  routes.register(linkintegrityRoutes);
+  routes.register(lockRoutes);
+  routes.register(navigationRoutes);
+  routes.register(navrootRoutes);
+  routes.register(nickRoutes);
+  routes.register(principalsRoutes);
+  routes.register(querystringRoutes);
+  routes.register(recyclebinRoutes);
+  routes.register(relatedRoutes);
+  routes.register(rolesRoutes);
+  routes.register(searchRoutes);
+  routes.register(sharingRoutes);
+  routes.register(siteRoutes);
+  routes.register(systemRoutes);
+  routes.register(translationsRoutes);
+  routes.register(typesRoutes);
+  routes.register(usersRoutes);
+  routes.register(userschemaRoutes);
+  routes.register(vocabulariesRoutes);
+  routes.register(workflowRoutes);
 }

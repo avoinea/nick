@@ -36,7 +36,7 @@ export class Client {
     const client = new Client() as any;
     const Document = models.get('Document');
 
-    routes.map((route: any) => {
+    routes.routes.map((route: any) => {
       if (route.client) {
         client[route.client] = async (
           {
