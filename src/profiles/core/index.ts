@@ -5,6 +5,28 @@
 // Internal imports
 import config from '../../helpers/config/config';
 
+// Models
+import models from '../../models';
+import { Action } from '../../models/action/action';
+import { Behavior } from '../../models/behavior/behavior';
+import { Catalog } from '../../models/catalog/catalog';
+import { ContentRule } from '../../models/content_rule/content_rule';
+import { Controlpanel } from '../../models/controlpanel/controlpanel';
+import { Document } from '../../models/document/document';
+import { File } from '../../models/file/file';
+import { Form } from '../../models/form/form';
+import { Group } from '../../models/group/group';
+import { Index } from '../../models/index/index';
+import { Permission } from '../../models/permission/permission';
+import { Profile } from '../../models/profile/profile';
+import { Redirect } from '../../models/redirect/redirect';
+import { Role } from '../../models/role/role';
+import { Type } from '../../models/type/type';
+import { User } from '../../models/user/user';
+import { Version } from '../../models/version/version';
+import { Vocabulary } from '../../models/vocabulary/vocabulary';
+import { Workflow } from '../../models/workflow/workflow';
+
 // Blocks
 import blocks from '../../blocks';
 import { slate } from '../../blocks/slate/slate';
@@ -122,6 +144,27 @@ import vocabulariesRoutes from '../../routes/vocabularies/vocabularies';
 import workflowRoutes from '../../routes/workflow/workflow';
 
 export function init(): void {
+  // Register models
+  models.register('Action', () => Action);
+  models.register('Behavior', () => Behavior);
+  models.register('Catalog', () => Catalog);
+  models.register('ContentRule', () => ContentRule);
+  models.register('Controlpanel', () => Controlpanel);
+  models.register('Document', () => Document);
+  models.register('File', () => File);
+  models.register('Form', () => Form);
+  models.register('Group', () => Group);
+  models.register('Index', () => Index);
+  models.register('Permission', () => Permission);
+  models.register('Profile', () => Profile);
+  models.register('Redirect', () => Redirect);
+  models.register('Role', () => Role);
+  models.register('Type', () => Type);
+  models.register('User', () => User);
+  models.register('Version', () => Version);
+  models.register('Vocabulary', () => Vocabulary);
+  models.register('Workflow', () => Workflow);
+
   // Register blocks
   blocks.register('title', title);
   blocks.register('slate', slate);

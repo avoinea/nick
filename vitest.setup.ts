@@ -20,8 +20,14 @@ import { knex } from './src/helpers/knex/knex';
 import { logger } from './src/helpers/log/log';
 import * as mail from './src/helpers/mail/mail';
 import * as url from './src/helpers/url/url';
+import models from './src/models';
 import { Model } from './src/models/_model/_model';
+import { Behavior } from './src/models/behavior/behavior';
+import { Controlpanel } from './src/models/controlpanel/controlpanel';
+import { Group } from './src/models/group/group';
+import { Role } from './src/models/role/role';
 import { User } from './src/models/user/user';
+import { Workflow } from './src/models/workflow/workflow';
 
 dayjs.extend(utc);
 
@@ -94,6 +100,11 @@ beforeEach(async () => {
   Model.knex(global.txn);
 
   // Add admin token
+  models.register('Behavior', () => Behavior);
+  models.register('Controlpanel', () => Controlpanel);
+  models.register('Group', () => Group);
+  models.register('Role', () => Role);
+  models.register('Workflow', () => Workflow);
   const admin = await User.fetchById('admin', {}, global.txn);
   await addToken(admin, token, global.txn);
 });

@@ -30,8 +30,8 @@ const underline = '\x1b[4m';
 async function main() {
   const command = last(process.argv);
   const trx = await knex.transaction();
-  const Profile = models.get('Profile');
   await initProfiles();
+  const Profile = models.get('Profile');
 
   try {
     await mapProfiles(async (profilePath, index) => {

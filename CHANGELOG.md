@@ -250,6 +250,7 @@
 - Refactor behaviors to use profile init @robgietema
 - Refactor content rules to use profile init @robgietema
 - Refactor routes to use profile init @robgietema
+- Refactor models to use profile init @robgietema
 
 ### Documentation
 
