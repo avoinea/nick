@@ -1941,13 +1941,13 @@ msgstr "Sivusto"
 #: src/profiles/core/controlpanels/mail.json:24
 msgctxt "Profiles|Core|Controlpanels|Mail"
 msgid "Site 'From' address"
-msgstr "Sivuston "From"-osoite"
+msgstr "Sivuston \"From\"-osoite"
 
 #. Default: "Site 'From' name"
 #: src/profiles/core/controlpanels/mail.json:29
 msgctxt "Profiles|Core|Controlpanels|Mail"
 msgid "Site 'From' name"
-msgstr "Sivuston "From"-nimi"
+msgstr "Sivuston \"From\"-nimi"
 
 #. Default: "Site Logo"
 #: src/profiles/core/controlpanels/site.json:22

@@ -239,13 +239,13 @@ msgstr "La descrizione di un elemento"
 #: src/profiles/core/catalog.json:440
 msgctxt "Profiles|Core|Catalog"
 msgid "An item’s type (e.g. Event)"
-msgstr "Il tipo di elemento (ad esempio "Evento")"
+msgstr "Il tipo di elemento (ad esempio \"Evento\")"
 
 #. Default: "An item’s workflow state (e.g.published)"
 #: src/profiles/core/catalog.json:459
 msgctxt "Profiles|Core|Catalog"
 msgid "An item’s workflow state (e.g.published)"
-msgstr "Lo stato del workflow (ad esempio "Pubblicato")"
+msgstr "Lo stato del workflow (ad esempio \"Pubblicato\")"
 
 #. Default: "Anonymous"
 #: src/profiles/core/roles.json:6
@@ -1941,13 +1941,13 @@ msgstr "Sito"
 #: src/profiles/core/controlpanels/mail.json:24
 msgctxt "Profiles|Core|Controlpanels|Mail"
 msgid "Site 'From' address"
-msgstr "Indirizzo "mittente" del sito"
+msgstr "Indirizzo \"mittente\" del sito"
 
 #. Default: "Site 'From' name"
 #: src/profiles/core/controlpanels/mail.json:29
 msgctxt "Profiles|Core|Controlpanels|Mail"
 msgid "Site 'From' name"
-msgstr "Nome del "mittente""
+msgstr "Nome del \"mittente\""
 
 #. Default: "Site Logo"
 #: src/profiles/core/controlpanels/site.json:22

@@ -799,7 +799,7 @@ msgstr ""
 #: src/profiles/core/behaviors/blocks.json:4
 msgctxt "Profiles|Core|Behaviors|Blocks"
 msgid "Enables Volto Blocks support"
-msgstr "Schakelt Volto Blocks-ondersteuning in""
+msgstr "Schakelt Volto Blocks-ondersteuning in\""
 
 #. Default: "Enter a comment that describes the changes you made."
 #: src/profiles/core/behaviors/versioning.json:15

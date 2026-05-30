@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Nick\n"
-"POT-Creation-Date: 2026-05-29T21:08:03.849Z\n"
+"POT-Creation-Date: 2026-05-30T12:57:54.776Z\n"
 "Last-Translator: Rob Gietema\n"
 "Language-Team: Nick\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: nick\n"
-
+ 
 #. Default: "&e = the triggering event, &c = the context, &u = the user"
 #: src/content_rules/actions/logger.ts:30
 msgctxt "Content rules|Actions|Logger"
