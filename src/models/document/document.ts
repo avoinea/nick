@@ -1414,7 +1414,7 @@ export class Document extends Model {
   /**
    * Fetch children.
    * @method fetchChildren
-   * @param {Any} req Request object.
+   * @param {any} _req Request object.
    * @param {Knex.Transaction} trx Transaction object.
    * @param {boolean} types Flag to include types in the output.
    * @return {Promise<void>} No return value.

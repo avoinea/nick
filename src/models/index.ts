@@ -14,8 +14,8 @@ class Models {
   static instance: Models;
 
   /**
-   * Construct a Config.
-   * @constructs Config
+   * Construct a Models.
+   * @constructs Models
    */
   constructor() {
     this.models = {};

@@ -1,6 +1,6 @@
 /**
- * Lock routes.
- * @module routes/lock/lock
+ * Email routes.
+ * @module routes/email/email
  */
 
 // Type imports

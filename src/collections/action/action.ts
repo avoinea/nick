@@ -1,6 +1,6 @@
 /**
  * ActionCollection.
- * @module collection/action/action
+ * @module collections/action/action
  */
 
 // Type imports
@@ -33,7 +33,6 @@ export class ActionCollection extends Collection<ActionModel> {
    * @returns {Promise<Json>} JSON object grouped by category.
    */
   async toJson(req: Request): Promise<Json> {
-    // const  = models.get('Catalog');
     return mapValues(
       groupBy(
         ((await super.toJson(req)) as unknown as ActionModel[]).filter(

@@ -26,8 +26,8 @@ export class TypeCollection extends Collection<TypeModel> {
   /**
    * Returns JSON data.
    * @method toJson
-   * @param {CustomRequest} req Request object.
-   * @returns {Promise<TypeResponse[]>} JSON object.
+   * @param {Request} req Request object.
+   * @returns {Promise<Json>} JSON object.
    */
   async toJson(req: Request): Promise<Json> {
     return ((await super.toJson(req)) as any).map((model: TypeModel) => ({

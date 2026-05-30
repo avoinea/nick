@@ -28,8 +28,8 @@ class ContentRules {
   static instance: ContentRules;
 
   /**
-   * Construct a Config.
-   * @constructs Config
+   * Construct a ContentRules.
+   * @constructs ContentRules
    */
   constructor() {
     this.actions = {};

@@ -13,7 +13,7 @@ export const slate = {
   /**
    * Convert to markdown.
    * @param {any} self The block instance.
-   * @param {any} document The document instance.
+   * @param {any} _document The document instance.
    * @returns {string} The markdown string.
    */
   toMarkdown: (self: any, _document: any): string => {
@@ -22,7 +22,7 @@ export const slate = {
 
   /**
    * Replace text.
-   * @param {RegExp} patern Pattern to search for.
+   * @param {RegExp} pattern Pattern to search for.
    * @param {string} replacement Replacement text.
    * @returns {any} New object or false if nothing found.
    */

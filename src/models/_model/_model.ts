@@ -1,6 +1,6 @@
 /**
- * Objection Model.
- * @module helpers/base-model/base-model
+ * Objection Base Model.
+ * @module models/_model/_model
  */
 
 // Type imports

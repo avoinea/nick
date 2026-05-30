@@ -38,7 +38,7 @@ class Middleware {
 
   /**
    * Use middlewares.
-   * @param {app} app The Express app to use the middlewares with.
+   * @param {Express} app The Express app to use the middlewares with.
    */
   use(app: Express): void {
     for (const middleware of this.middlewares) {

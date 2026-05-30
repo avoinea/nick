@@ -1,6 +1,6 @@
 /**
- * Markdown helper tests.
- * @module helpers/markdown/markdown.test
+ * Slate helper tests.
+ * @module helpers/slate/slate.test
  */
 
 // External imports

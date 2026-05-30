@@ -11,7 +11,7 @@ import config from '../config/config';
  * @method sendPush
  * @param {string} method Method used to be embedded
  * @param {string} path Path of the resource to be pushed
- * @params {data} data Data to be pushed
+ * @param {data} data Data to be pushed
  * @returns {Promise<void>} Promise that resolves when the push is complete
  */
 export async function sendPush(

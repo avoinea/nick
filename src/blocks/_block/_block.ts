@@ -6,19 +6,19 @@
 export const block = {
   /**
    * Convert to markdown.
-   * @param self The block instance.
-   * @param document The document instance.
-   * @returns The markdown string.
+   * @param {any} _self The block instance.
+   * @param {any} _document The document instance.
+   * @returns {string} The markdown string.
    */
-  toMarkdown: (_self: any, _document: any) => {
+  toMarkdown: (_self: any, _document: any): string => {
     return '';
   },
 
   /**
    * Replace text.
-   * @param patern Pattern to search for.
-   * @param replacement Replacement text.
+   * @param {RegExp} _pattern Pattern to search for.
+   * @param {string} _replacement Replacement text.
    * @returns New object or false if nothing found.
    */
-  replace: (_pattern: string, _replacement: string): any => false,
+  replace: (_pattern: RegExp, _replacement: string): any => false,
 };

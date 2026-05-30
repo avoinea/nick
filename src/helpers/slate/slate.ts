@@ -1,6 +1,6 @@
 /**
- * Markdown helper.
- * @module helpers/markdown/markdown
+ * Slate helper.
+ * @module helpers/slate/slate
  */
 
 interface SlateTextNode {

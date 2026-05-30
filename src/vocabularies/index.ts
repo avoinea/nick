@@ -31,7 +31,7 @@ class Vocabularies {
   /**
    * Register a vocabulary.
    * @param {string} name The name of the vocabulary.
-   * @param {Vocabulary} vocabulary The vocabulary to register.
+   * @param {VocabularyHandler} vocabulary The vocabulary to register.
    */
   register(name: string, vocabulary: VocabularyHandler) {
     this.vocabularies[name] = vocabulary;
@@ -40,7 +40,7 @@ class Vocabularies {
   /**
    * Get a vocabulary.
    * @param {string} name The name of the vocabulary.
-   * @returns {Vocabulary} The vocabulary.
+   * @returns {VocabularyHandler} The vocabulary.
    */
   get(name: string): VocabularyHandler {
     if (!this.vocabularies[name]) {

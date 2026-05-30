@@ -18,8 +18,8 @@ class Blocks {
   static instance: Blocks;
 
   /**
-   * Construct a Config.
-   * @constructs Config
+   * Construct a Block.
+   * @constructs Block
    */
   constructor() {
     this.blocks = {};
