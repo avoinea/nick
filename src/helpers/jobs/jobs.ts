@@ -10,6 +10,7 @@ import type { Knex } from 'knex';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { fork } from 'node:child_process';
+import { v4 as uuid } from 'uuid';
 
 // Internal imports
 import models from '../../models';
@@ -38,6 +39,43 @@ class Jobs {
     }
 
     return Jobs.instance;
+  }
+
+  /**
+   * Add job.
+   */
+  async add(
+    title: string,
+    description: string,
+    params: any,
+    actor: string,
+    trx: Knex.Transaction,
+  ): Promise<string> {
+    const newUuid = uuid();
+    const created = dayjs.utc().format();
+
+    // Create job
+    const Job = models.get('Job');
+    await Job.create(
+      {
+        uuid: newUuid,
+        title: title,
+        description: description,
+        params: params,
+        actor: actor,
+        created,
+        started: null,
+        finished: null,
+        status: 'created',
+        result: {},
+      },
+      {},
+      trx,
+    );
+
+    await jobs.check(trx);
+
+    return newUuid;
   }
 
   /**

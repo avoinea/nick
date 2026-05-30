@@ -53,7 +53,18 @@ process.on('message', async (data: any) => {
         const cli = Client.initialize({
           apiPath: `http://localhost:${config.settings.port}`,
         });
-        const result = cli[data.method](omit(data, ['method']));
+        const result = cli[data.method](
+          omit(
+            {
+              ...data,
+              params: {
+                ...data.params,
+                job: true,
+              },
+            },
+            ['method'],
+          ),
+        );
 
         // Send result
         if (process.send) {
