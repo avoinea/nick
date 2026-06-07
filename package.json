@@ -70,7 +70,7 @@
     "@types/express": "5.0.6",
     "@types/jsonwebtoken": "9.0.10",
     "@types/mime-types": "3.0.1",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "@types/nodemailer": "8.0.0",
     "@types/pdf-parse": "1.1.5",
     "@types/supertest": "7.2.0",
@@ -89,8 +89,8 @@
     "vitest": "5.0.0-beta.2"
   },
   "dependencies": {
-    "@formatjs/cli": "6.16.6",
-    "@formatjs/intl": "4.1.12",
+    "@formatjs/cli": "6.16.9",
+    "@formatjs/intl": "4.1.13",
     "bcrypt": "6.0.0",
     "bcrypt-promise": "2.0.0",
     "dayjs": "1.11.21",
@@ -114,5 +114,5 @@
     "tsx": "4.22.4",
     "uuid": "14.0.0"
   },
-  "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1"
+  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916"
 }
