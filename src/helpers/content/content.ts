@@ -4,7 +4,7 @@
  */
 
 // Type imports
-import type { Request } from '../../types';
+import type { Request, Schema } from '../../types';
 
 // External imports
 import { last } from 'es-toolkit/array';
@@ -17,6 +17,7 @@ import { PDFParse } from 'pdf-parse';
 import { vision } from '../ai/ai';
 import config from '../config/config';
 import { readProfileFile, writeFile, writeImage } from '../fs/fs';
+import { getFactoryFields } from '../schema/schema';
 import { mapAsync } from '../utils/utils';
 import { getUrl } from '../../helpers/url/url';
 import models from '../../models';
@@ -30,10 +31,6 @@ import { handler as related } from '../../routes/related/related';
 import { handler as translations } from '../../routes/translations/translations';
 import { handler as types } from '../../routes/types/types';
 import { handler as workflow } from '../../routes/workflow/workflow';
-
-interface Type {
-  getFactoryFields(fieldType: string): Promise<string[]>;
-}
 
 interface BlockHref {
   '@id': string;
@@ -58,14 +55,14 @@ interface Json {
  * Handle file uploads and updates
  * @method handleFiles
  * @param {Json} json Current json object.
- * @param {Type} type Type object.
+ * @param {Schema} schema Schema object.
  * @param {Knex.Transaction} trx Transaction object.
  * @param {string} profile Path of the profile.
  * @returns {Json} Fields with uuid info.
  */
 export async function handleFiles(
   json: Json,
-  type: Type,
+  schema: Schema,
   trx: Knex.Transaction,
   profile?: string,
 ): Promise<Json> {
@@ -73,7 +70,7 @@ export async function handleFiles(
   const fields = { ...json };
 
   // Get file fields
-  const fileFields = await type.getFactoryFields('File');
+  const fileFields = getFactoryFields(schema, 'File');
 
   await mapAsync(fileFields, async (field) => {
     // Check if filename is specified
@@ -89,7 +86,11 @@ export async function handleFiles(
     }
 
     // Check if new data is uploaded
-    if ('data' in fields[field]) {
+    if (
+      fields[field] &&
+      typeof fields[field] === 'object' &&
+      'data' in fields[field]
+    ) {
       // Create filestream
       const { uuid, size } = await writeFile(
         fields[field].data,
@@ -125,14 +126,14 @@ export async function handleFiles(
  * Handle image uploads and updates
  * @method handleImages
  * @param {Json} json Current json object.
- * @param {Type} type Type object.
+ * @param {Schema} schema Schema object.
  * @param {Knex.Transaction} trx Transaction object.
  * @param {string} profile Path of the profile.
  * @returns {Json} Fields with uuid info.
  */
 export async function handleImages(
   json: Json,
-  type: Type,
+  schema: Schema,
   trx: Knex.Transaction,
   profile?: string,
 ): Promise<Record<string, any>> {
@@ -140,7 +141,7 @@ export async function handleImages(
   const fields = { ...json };
 
   // Get file fields
-  const imageFields = await type.getFactoryFields('Image');
+  const imageFields = getFactoryFields(schema, 'Image');
 
   await mapAsync(imageFields, async (field) => {
     // Check if filename is specified
@@ -156,7 +157,11 @@ export async function handleImages(
     }
 
     // Check if new data is uploaded
-    if (fields[field] && 'data' in fields[field]) {
+    if (
+      fields[field] &&
+      typeof fields[field] === 'object' &&
+      'data' in fields[field]
+    ) {
       // Create filestream
       const { uuid, size, width, height, scales } = await writeImage(
         fields[field].data,
@@ -194,18 +199,18 @@ export async function handleImages(
  * Handle relation lists
  * @method handleRelationLists
  * @param {Json} json Current json object.
- * @param {Type} type Type object.
+ * @param {Schema} schema Schema object.
  * @returns {Json} Fields with uuid info.
  */
 export async function handleRelationLists(
   json: Json,
-  type: Type,
+  schema: Schema,
 ): Promise<Record<string, any>> {
   // Make a copy of the json data
   const fields = { ...json };
 
   // Get file fields
-  const relationListFields = await type.getFactoryFields('Relation List');
+  const relationListFields = getFactoryFields(schema, 'Relation List');
 
   // Strip all but the UID from the document data
   await mapAsync(relationListFields, async (field) => {

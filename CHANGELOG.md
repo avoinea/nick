@@ -257,6 +257,7 @@
 - Refactor models to use profile init @robgietema
 - Rename default profile to examplecontent @robgietema
 - Fix initialization for client @robgietema
+- Save controlpanel and userschema files as blobs @robgietema
 
 ### Documentation
 

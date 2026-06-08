@@ -8,12 +8,16 @@ import type { Knex } from 'knex';
 import type { Json, Request, VocabularyTerm } from '../../types';
 
 // External imports
-import { uniq } from 'es-toolkit/array';
+import { compact, flattenDeep, uniq } from 'es-toolkit/array';
 
 // Internal imports
 import models from '../';
 import { Model } from '../_model/_model';
+import config from '../../helpers/config/config';
+import { removeFile } from '../../helpers/fs/fs';
+import { getFactoryFields } from '../../helpers/schema/schema';
 import { getRootUrl } from '../../helpers/url/url';
+import { mapAsync } from '../../helpers/utils/utils';
 
 /**
  * A model for User.
@@ -171,6 +175,51 @@ export class User extends Model {
       trx,
     );
     return uniq([...roles, ...groupRoles]);
+  }
+
+  /**
+   * Delete files and images associated with the user
+   * @method deleteFilesAndImages
+   * @param {Request} req Request object.
+   * @param {Knex.Transaction} trx Knex transaction
+   * @return {Promise<void>} Return void
+   */
+  async deleteFilesAndImages(
+    req: Request,
+    trx: Knex.Transaction,
+  ): Promise<void> {
+    const self: InstanceType<typeof User> = this;
+
+    // Get file and image fields
+    const fileFields = getFactoryFields(
+      config.settings.userschema(req),
+      'File',
+    );
+    const imageFields = getFactoryFields(
+      config.settings.userschema(req),
+      'Image',
+    );
+
+    // If file fields exist
+    if (fileFields.length > 0 || imageFields.length > 0) {
+      // Get all file uuids from all fields
+      const files = compact(
+        uniq(
+          flattenDeep([
+            ...fileFields.map((field: string) => self.json[field]?.uuid),
+            ...imageFields.map((field: string) => [
+              self.json[field]?.uuid,
+              ...Object.keys(config.settings.imageScales).map(
+                (scale) => self.json[field]?.scales?.[scale].uuid,
+              ),
+            ]),
+          ]),
+        ),
+      );
+
+      // Remove files
+      await mapAsync(files, async (file: any) => await removeFile(file, trx));
+    }
   }
 
   /**

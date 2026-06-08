@@ -210,21 +210,4 @@ export class Type extends Model {
     // Return data
     return json as Json;
   }
-
-  /**
-   * Get factory fields.
-   * @method getFactoryFields
-   * @param {string} factory Factory field.
-   * @returns {string[]} Array of fields with given factory.
-   */
-  getFactoryFields(factory: string): string[] {
-    const self: InstanceType<typeof Type> = this;
-    const properties = (self._schema && self._schema.properties) || {};
-
-    // Get factory fields
-    const factoryFields = Object.keys(properties).map((property) =>
-      properties[property].factory === factory ? property : false,
-    );
-    return compact(factoryFields) as string[];
-  }
 }

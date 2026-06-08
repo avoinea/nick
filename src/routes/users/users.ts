@@ -17,6 +17,11 @@ import jwt from 'jsonwebtoken';
 import config from '../../helpers/config/config';
 import events from '../../events';
 import { RequestException } from '../../helpers/error/error';
+import {
+  handleFiles,
+  handleImages,
+  handleRelationLists,
+} from '../../helpers/content/content';
 import { apiLimiter } from '../../helpers/limiter/limiter';
 import { sendMail } from '../../helpers/mail/mail';
 import models from '../../models';
@@ -208,21 +213,29 @@ export default [
         ? await bcrypt.hash(req.body.password, 10)
         : '';
 
+      let json: any = omit(req.body, [
+        ...userFields,
+        'password',
+        'roles',
+        'groups',
+        'username',
+        'fullname',
+        'email',
+      ]);
+
+      // Handle files, images and relation lists
+      const schema = config.settings.userschema(req);
+      json = await handleFiles(json, schema, trx);
+      json = await handleImages(json, schema, trx);
+      json = await handleRelationLists(json, schema);
+
       // Add user
       const user = await User.create(
         {
           id: req.body.username,
           fullname: req.body.fullname,
           email: req.body.email,
-          json: omit(req.body, [
-            ...userFields,
-            'password',
-            'roles',
-            'groups',
-            'username',
-            'fullname',
-            'email',
-          ]),
+          json,
           password: manageUsers ? password : '',
           _roles: manageUsers ? req.body.roles || [] : [],
           _groups: manageUsers ? req.body.groups || [] : [],
@@ -336,7 +349,11 @@ export default [
         // Trigger on before delete user
         await events.trigger('onBeforeDeleteUser', req.document, user, trx);
 
-        await User.deleteById(req.params.id, trx);
+        // Delete files and images the user
+        await user.deleteFilesAndImages(req, trx);
+
+        // Delete user
+        await user.delete(trx);
 
         // Trigger on after delete user
         await events.trigger('onAfterDeleteUser', req.document, user, trx);

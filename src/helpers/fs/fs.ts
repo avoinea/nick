@@ -288,12 +288,16 @@ export async function writeImage(
  * Remove file
  * @method removeFile
  * @param {string} uuid Uuid of the file to remove.
+ * @param {Knex.Transaction} trx Transaction object.
  * @returns {Promise<void>} Void
  */
-export async function removeFile(uuid: string): Promise<void> {
+export async function removeFile(
+  uuid: string,
+  trx: Knex.Transaction,
+): Promise<void> {
   if (config.settings.blobs === 'db') {
     const File = models.get('File');
-    await File.deleteById(uuid);
+    await File.deleteById(uuid, trx);
   } else {
     if (!validate(uuid)) {
       throw `Invalid uuid: ${uuid}`;

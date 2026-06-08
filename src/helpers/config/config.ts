@@ -121,7 +121,6 @@ class Config {
         ),
       },
       recyclebin: config.recyclebin || false,
-      routes: config.routes || false,
       cache: config.cache || {
         enabled: false,
         anonymousOnly: true,

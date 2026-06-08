@@ -13,6 +13,7 @@ import { Knex } from 'knex';
 // Internal imports
 import config from '../../helpers/config/config';
 import { removeFile } from '../../helpers/fs/fs';
+import { getFactoryFields } from '../../helpers/schema/schema';
 import { mapAsync, uniqueId } from '../../helpers/utils/utils';
 import models from '../../models';
 
@@ -90,8 +91,8 @@ export const move_item = {
       await document.fetchRelated('_type', trx);
 
       // Get file and image fields
-      const fileFields = document._type.getFactoryFields('File');
-      const imageFields = document._type.getFactoryFields('Image');
+      const fileFields = getFactoryFields(document._type._schema, 'File');
+      const imageFields = getFactoryFields(document._type._schema, 'Image');
 
       // If file fields exist
       if (fileFields.length > 0 || imageFields.length > 0) {
@@ -114,7 +115,10 @@ export const move_item = {
         );
 
         // Remove files
-        await mapAsync(files, async (file: string) => await removeFile(file));
+        await mapAsync(
+          files,
+          async (file: string) => await removeFile(file, trx),
+        );
       }
 
       // Get parent

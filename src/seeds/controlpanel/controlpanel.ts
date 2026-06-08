@@ -12,7 +12,11 @@ import { merge } from 'es-toolkit/object';
 import { promises as fs } from 'fs';
 
 // Internal imports
-import { handleFiles, handleImages } from '../../helpers/content/content';
+import {
+  handleFiles,
+  handleImages,
+  handleRelationLists,
+} from '../../helpers/content/content';
 import { dirExists } from '../../helpers/fs/fs';
 import { stripI18n } from '../../helpers/i18n/i18n';
 import { mapAsync } from '../../helpers/utils/utils';
@@ -48,16 +52,17 @@ export const seedControlpanel = async (
       // Handle files and images
       data.data = await handleFiles(
         data.data,
-        current,
+        current.schema,
         trx,
         `${profilePath}/controlpanels`,
       );
       data.data = await handleImages(
         data.data,
-        current,
+        current.schema,
         trx,
         `${profilePath}/controlpanels`,
       );
+      data.data = await handleRelationLists(data.data, current.schema);
 
       // Update record
       await Controlpanel.update(

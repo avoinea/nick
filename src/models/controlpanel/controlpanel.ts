@@ -54,21 +54,4 @@ export class Controlpanel extends Model {
         } as unknown as Json)
       : (json as Json);
   }
-
-  /**
-   * Get factory fields.
-   * @method getFactoryFields
-   * @param {string} factory Factory field.
-   * @returns {string[]} Array of fields with given factory.
-   */
-  getFactoryFields(factory: string): string[] {
-    const self: InstanceType<typeof Controlpanel> = this;
-    const properties = (self.schema && self.schema.properties) || {};
-
-    // Get factory fields
-    const factoryFields = Object.keys(properties).map((property) =>
-      properties[property].factory === factory ? property : false,
-    );
-    return compact(factoryFields) as string[];
-  }
 }

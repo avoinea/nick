@@ -373,5 +373,5 @@ export type ConfigSettings = {
     api: string;
     chunk: string;
   };
-  userschema?: (req: Request) => any;
+  userschema: (req: Request) => Schema;
 };
