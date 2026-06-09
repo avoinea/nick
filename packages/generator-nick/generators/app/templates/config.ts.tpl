@@ -45,11 +45,11 @@ export const config = {
   prefix: '',
   userRegistration: true,
   profiles: [
-    '@robgietema/nick:core',
-    /* '@robgietema/nick:ai', */
+    '@plone/nick:core',
+    /* '@plone/nick:ai', */
     '<%= projectName %>:default',
-    /* '@robgietema/nick:multilingual', */
-    /* '@robgietema/nick:multilingualcontent', */
+    /* '@plone/nick:multilingual', */
+    /* '@plone/nick:multilingualcontent', */
   ],
   push: {
     enabled: false,

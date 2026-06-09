@@ -1,5 +1,5 @@
 services:
-  nickcms-backend:
+  nick-backend:
     build:
       context: .
     depends_on:
@@ -25,7 +25,7 @@ services:
 
   db:
     image: postgres:18-alpine
-    container_name: nickcms-db
+    container_name: nick-db
     environment:
       POSTGRES_DB: nick
       POSTGRES_USER: nick

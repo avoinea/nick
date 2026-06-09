@@ -1,4 +1,4 @@
-import { Client } from '@robgietema/nick';
+import { Client } from '@plone/nick';
 
 const cli = Client.initialize({ apiPath: 'http://localhost:8080' });
 const login = await cli.login({

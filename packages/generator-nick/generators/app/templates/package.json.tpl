@@ -59,7 +59,7 @@
     "vitest": "4.0.18"
   },
   "dependencies": {
-    "@robgietema/nick": "workspace:^",
+    "@plone/nick": "workspace:^",
     "knex": "3.1.0",
     "nodemon": "3.1.14",
     "tsx": "4.21.0"

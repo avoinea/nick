@@ -19,7 +19,7 @@ Content-Type: application/json
             {
               "type": "link",
               "data": {
-                "url": "https://nickcms.org"
+                "url": "https://nick.docs.plone.org"
               },
               "children": [
                 {

@@ -38,7 +38,7 @@ let config: any = {};
 if (fs.existsSync(`${process.cwd()}/config.ts`)) {
   config = (await import(`${process.cwd()}/config`)).config;
 }
-const packageEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
+const packageEntry = fileURLToPath(import.meta.resolve('@plone/nick'));
 const packageRoot = path.dirname(packageEntry);
 
 /**
@@ -98,10 +98,7 @@ class Config {
       frontendUrl: config.frontendUrl || 'http://localhost:3000',
       prefix: config.prefix || '',
       userRegistration: config.userRegistration || false,
-      profiles: config.profiles || [
-        '@robgietema/nick:core',
-        '@robgietema/nick:default',
-      ],
+      profiles: config.profiles || ['@plone/nick:core', '@plone/nick:default'],
       requestLimit: config.requestLimit || {
         api: '1mb',
         files: '10mb',

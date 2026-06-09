@@ -136,7 +136,7 @@ Content-Type: application/json
       "expires": null,
       "created": "2022-04-02T20:00:00.000Z",
       "effective": "2022-04-02T20:00:00.000Z",
-      "getObjSize": 1806,
+      "getObjSize": 1814,
       "listCreators": [
         "admin"
       ],

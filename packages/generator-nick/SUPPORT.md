@@ -4,13 +4,13 @@ This article explains where to get help with Nick.
 Please read through the following guidelines.
 
 > 👉 **Note**: before participating in our community, please read our
-> [code of conduct](https://github.com/robgietema/nick/blob/main/CODE_OF_CONDUCT.md).
+> [code of conduct](https://github.com/plone/nick/blob/main/CODE_OF_CONDUCT.md).
 > By interacting with this repository or community you agree to abide by its
 > terms.
 
 ## Asking quality questions
 
-Questions can go to [GitHub discussions](https://github.com/robgietema/nick/discussions).
+Questions can go to [GitHub discussions](https://github.com/plone/nick/discussions).
 
 Help us help you!
 Spend time framing questions and add links and resources.
@@ -31,5 +31,5 @@ Here are some tips:
 
 ## Contributions
 
-See [CONTRIBUTING.md](https://github.com/robgietema/nick/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/plone/nick/blob/main/CONTRIBUTING.md)
 on how to contribute.

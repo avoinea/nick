@@ -10,7 +10,7 @@ This part of the documentation helps you find the best way to get started with N
 
 ## Try a demo
 
-You can try out a demo of Nick combined with the Volto frontend at [https://demo.nickcms.org](https://demo.nickcms.org)
+You can try out a demo of Nick combined with the Volto frontend at [https://nick.demo.plone.org](https://nick.demo.plone.org)
 
 ## Install Nick
 

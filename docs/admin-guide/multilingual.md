@@ -15,9 +15,9 @@ To setup multilingual support add the following change to your `config.ts` file:
 export const config = {
   ...
   profiles: [
-    '@robgietema/nick:core',
-    '@robgietema/nick:multilingual',
-    '@robgietema/nick:multilingualcontent',
+    '@plone/nick:core',
+    '@plone/nick:multilingual',
+    '@plone/nick:multilingualcontent',
   ],
   ...
 };

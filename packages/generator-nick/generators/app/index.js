@@ -33,7 +33,7 @@ export default class extends Generator {
 
 It's important to have the generators updated!
 
-Run "npm install -g @robgietema/generator-nick" to update.`,
+Run "npm install -g @plone/generator-nick" to update.`,
     });
 
     let props;

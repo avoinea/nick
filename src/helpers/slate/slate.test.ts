@@ -33,7 +33,7 @@ describe('slateToMarkdown', () => {
             },
             {
               data: {
-                url: 'https://nickcms.org',
+                url: 'https://nick.docs.plone.org',
               },
               type: 'link',
               children: [
@@ -48,7 +48,7 @@ describe('slateToMarkdown', () => {
           ],
         },
       ]),
-    ).toBe('This is the demo site of [Nick](https://nickcms.org).\n\n');
+    ).toBe('This is the demo site of [Nick](https://nick.docs.plone.org).\n\n');
   });
 
   it('should convert inline styles to Markdown', () => {

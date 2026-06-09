@@ -22,7 +22,7 @@ The profiles are registered in the `config.ts` file and are applied in order:
 export const config = {
   ...
   profiles: [
-    '@robgietema/nick:core',
+    '@plone/nick:core',
     'my_nick_project:default',
   ],
   ...
@@ -54,7 +54,7 @@ ALTER DATABASE "nick" OWNER TO "nick";
 ## Get the code
 
 ```shell
-$ git clone git@github.com:robgietema/nick.git
+$ git clone git@github.com:plone/nick.git
 $ cd nick
 ```
 

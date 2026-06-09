@@ -1,12 +1,12 @@
 {
-  "name": "@robgietema/nick",
+  "name": "@plone/nick",
   "description": "Nearly Headless CMS",
   "type": "module",
   "maintainers": [
     {
-      "name": "Rob Gietema",
-      "email": "rob.gietema@gmail.com",
-      "url": "https://robgietema.nl"
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
     }
   ],
   "exports": {
@@ -23,13 +23,13 @@
   "version": "2.8.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:robgietema/nick.git"
+    "url": "git@github.com:plone/nick.git"
   },
   "bugs": {
-    "url": "https://github.com/robgietema/nick/issues",
-    "email": "info@nickcms.org"
+    "url": "https://github.com/plone/nick/issues",
+    "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "https://nickcms.org",
+  "homepage": "https://nick.docs.plone.org",
   "keywords": [
     "cms"
   ],
