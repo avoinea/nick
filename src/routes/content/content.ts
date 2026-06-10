@@ -783,8 +783,13 @@ export default [
 
       // Get id and path variables of document, parent and siblings
       await req.document.fetchRelated('_parent', trx);
-      await req.document._parent.fetchChildren({}, trx, false);
-      const id = req.body.id || req.document.id;
+      if (req.document._parent) {
+        await req.document._parent.fetchChildren({}, trx, false);
+      }
+      const id =
+        req.document._parent.path === '/'
+          ? req.document.id
+          : req.body.id || req.document.id;
       const path = req.document.path;
 
       // Get unique id if id has changed

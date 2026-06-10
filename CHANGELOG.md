@@ -207,6 +207,7 @@
 - Fix related items bug @robgietema
 - Bff fixes for Aurora @sneridagh
 - Fix issue with package resolve when using Nick as a dep @robgietema
+- Fix a bug when editing the root document @mpalomaki
 
 ### Internal
 
