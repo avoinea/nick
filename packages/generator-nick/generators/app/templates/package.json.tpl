@@ -12,8 +12,8 @@
     "cms"
   ],
   "scripts": {
-    "develop": "missdev --config=jsconfig.json --fetch-https",
-    "develop:npx": "npx -p mrs-developer missdev --config=jsconfig.json --fetch-https",
+    "develop": "missdev --config=tsconfig.json --fetch-https",
+    "develop:npx": "npx -p mrs-developer missdev --config=tsconfig.json --fetch-https",
     "bootstrap": "pnpm preinstall && pnpm install && pnpm migrate && pnpm seed",
     "convert": "tsx scripts/convert.ts",
     "i18n": "tsx src/develop/nick/scripts/i18n.ts",
