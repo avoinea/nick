@@ -277,6 +277,7 @@
 - Add documentation for blobs @robgietema
 - Add documentation about html filtering @robgietema
 - Add documentation about how to setup health checks @robgietema
+- Add documentation about how to setup the recyclebin @robgietema
 
 ## 2.8.0 (2022-07-17)
 
