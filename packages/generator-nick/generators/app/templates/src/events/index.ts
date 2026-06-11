@@ -5,6 +5,6 @@
  */
 
 // External imports
-import events from '@robgietema/nick/src/events';
+import events from '@plone/nick/src/events';
 
 export default events;

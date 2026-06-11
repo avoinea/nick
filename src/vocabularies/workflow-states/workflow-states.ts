@@ -1,6 +1,6 @@
 /**
  * Workflows states vocabulary.
- * @module vocabularies/workflows-states/workflows-states
+ * @module vocabularies/workflow-states/workflow-states
  */
 
 // Type imports

@@ -1,5 +1,5 @@
 {
-  "id": "@robgietema/nick:core",
+  "id": "@plone/nick:core",
   "title": "Nick Core",
   "description": "Core functionality of Nick",
   "version": 1001,

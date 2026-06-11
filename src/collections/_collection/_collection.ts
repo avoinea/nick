@@ -1,6 +1,6 @@
 /**
  * Collection.
- * @module collection/_collection/_collection
+ * @module collections/_collection/_collection
  */
 
 // Type imports

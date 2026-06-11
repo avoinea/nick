@@ -1,6 +1,6 @@
 /**
- * File system helper.
- * @module helpers/fs/fs
+ * I18n helper.
+ * @module helpers/i18n/i18n
  */
 
 // External imports

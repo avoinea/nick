@@ -1,12 +1,12 @@
 {
-  "name": "@robgietema/nick",
+  "name": "@plone/nick",
   "description": "Nearly Headless CMS",
   "type": "module",
   "maintainers": [
     {
-      "name": "Rob Gietema",
-      "email": "rob.gietema@gmail.com",
-      "url": "https://robgietema.nl"
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
     }
   ],
   "exports": {
@@ -23,13 +23,13 @@
   "version": "2.8.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:robgietema/nick.git"
+    "url": "git@github.com:plone/nick.git"
   },
   "bugs": {
-    "url": "https://github.com/robgietema/nick/issues",
-    "email": "info@nickcms.org"
+    "url": "https://github.com/plone/nick/issues",
+    "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "https://nickcms.org",
+  "homepage": "https://nick.docs.plone.org",
   "keywords": [
     "cms"
   ],
@@ -70,13 +70,14 @@
     "@types/express": "5.0.6",
     "@types/jsonwebtoken": "9.0.10",
     "@types/mime-types": "3.0.1",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "@types/nodemailer": "8.0.0",
     "@types/pdf-parse": "1.1.5",
     "@types/supertest": "7.2.0",
+    "@types/turndown": "5.0.6",
     "@vitest/coverage-v8": "5.0.0-beta.2",
     "@vitest/ui": "5.0.0-beta.2",
-    "eslint": "10.4.0",
+    "eslint": "10.4.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",
     "glob": "13.0.6",
@@ -85,12 +86,13 @@
     "prettier": "3.8.3",
     "supertest": "7.2.2",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.60.0",
+    "typescript-eslint": "8.61.0",
     "vitest": "5.0.0-beta.2"
   },
   "dependencies": {
-    "@formatjs/cli": "6.16.6",
-    "@formatjs/intl": "4.1.12",
+    "@aws-sdk/client-s3": "3.1065.0",
+    "@formatjs/cli": "6.16.10",
+    "@formatjs/intl": "4.1.13",
     "bcrypt": "6.0.0",
     "bcrypt-promise": "2.0.0",
     "dayjs": "1.11.21",
@@ -104,15 +106,17 @@
     "log4js": "6.9.1",
     "mime-types": "3.0.2",
     "node-cron": "4.2.1",
-    "nodemailer": "8.0.9",
+    "nodemailer": "8.0.10",
     "nodemon": "3.1.14",
     "objection": "3.1.5",
     "pdf-parse": "2.4.5",
     "pg": "8.21.0",
     "sharp": "0.34.5",
     "slugify": "1.6.9",
-    "tsx": "4.22.3",
-    "uuid": "14.0.0"
+    "turndown": "7.2.4",
+    "tsx": "4.22.4",
+    "uuid": "14.0.0",
+    "xss": "1.0.15"
   },
-  "packageManager": "pnpm@11.4.0+sha512.f0febc7e37552ab485494a914241b338e0b3580b93d54ce31f00933015880863129038a1b4ae4e414a0ee63ac35bf21197e990172c4a68256450b5636310968f"
+  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916"
 }

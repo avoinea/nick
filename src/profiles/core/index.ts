@@ -31,6 +31,7 @@ import { Workflow } from '../../models/workflow/workflow';
 
 // Blocks
 import blocks from '../../blocks';
+import { html } from '../../blocks/html/html';
 import { slate } from '../../blocks/slate/slate';
 import { title } from '../../blocks/title/title';
 
@@ -127,6 +128,7 @@ import databaseRoutes from '../../routes/database/database';
 import emailRoutes from '../../routes/email/email';
 import formRoutes from '../../routes/form/form';
 import groupsRoutes from '../../routes/groups/groups';
+import healthRoutes from '../../routes/health/health';
 import historyRoutes from '../../routes/history/history';
 import inheritRoutes from '../../routes/inherit/inherit';
 import jobsRoutes from '../../routes/jobs/jobs';
@@ -139,6 +141,7 @@ import principalsRoutes from '../../routes/principals/principals';
 import querystringRoutes from '../../routes/querystring/querystring';
 import recyclebinRoutes from '../../routes/recyclebin/recyclebin';
 import relatedRoutes from '../../routes/related/related';
+import replaceRoutes from '../../routes/replace/replace';
 import rolesRoutes from '../../routes/roles/roles';
 import scheduledJobsRoutes from '../../routes/scheduled_jobs/scheduled_jobs';
 import searchRoutes from '../../routes/search/search';
@@ -177,6 +180,7 @@ export function init(): void {
   models.register('Workflow', () => Workflow);
 
   // Register blocks
+  blocks.register('html', html);
   blocks.register('title', title);
   blocks.register('slate', slate);
 
@@ -275,6 +279,7 @@ export function init(): void {
   routes.register(emailRoutes);
   routes.register(formRoutes);
   routes.register(groupsRoutes);
+  routes.register(healthRoutes);
   routes.register(historyRoutes);
   routes.register(inheritRoutes);
   routes.register(jobsRoutes);
@@ -287,6 +292,7 @@ export function init(): void {
   routes.register(querystringRoutes);
   routes.register(recyclebinRoutes);
   routes.register(relatedRoutes);
+  routes.register(replaceRoutes);
   routes.register(rolesRoutes);
   routes.register(searchRoutes);
   routes.register(scheduledJobsRoutes);

@@ -1,6 +1,8 @@
 ---
-permalink: /usage/push
-parent: Push API
+title: Push API
+nav_order: 5
+permalink: /admin-guide/push
+parent: Admin guide
 ---
 
 # Push API

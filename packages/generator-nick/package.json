@@ -1,28 +1,28 @@
 {
-  "name": "@robgietema/generator-nick",
+  "name": "@plone/generator-nick",
   "description": "Generator for Nick",
   "type": "module",
   "maintainers": [
     {
-      "name": "Rob Gietema",
-      "email": "rob.gietema@gmail.com",
-      "url": "https://robgietema.nl"
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
     }
   ],
   "license": "MIT",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "repository": {
     "type": "git",
-    "url": "git@github.com:robgietema/nick.git"
+    "url": "git@github.com:plone/nick.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/robgietema/nick/issues",
-    "email": "info@nickcms.org"
+    "url": "https://github.com/plone/nick/issues",
+    "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "https://nickcms.org",
+  "homepage": "https://nick.docs.plone.org",
   "files": [
     "generators"
   ],

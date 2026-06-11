@@ -1,6 +1,6 @@
 /**
- * Log.
- * @module log
+ * Log helper.
+ * @module helpers/log/log
  */
 
 // External imports

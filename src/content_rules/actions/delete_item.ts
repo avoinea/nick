@@ -14,6 +14,7 @@ import { Knex } from 'knex';
 import config from '../../helpers/config/config';
 import { removeFile } from '../../helpers/fs/fs';
 import { mapAsync } from '../../helpers/utils/utils';
+import { getFactoryFields } from '../../helpers/schema/schema';
 
 export const delete_item = {
   getTitle: (req: Request) => req.i18n('Delete item'),
@@ -41,8 +42,8 @@ export const delete_item = {
     await document.fetchRelated('_type', trx);
 
     // Get file and image fields
-    const fileFields = document._type.getFactoryFields('File');
-    const imageFields = document._type.getFactoryFields('Image');
+    const fileFields = getFactoryFields(document._type._schema, 'File');
+    const imageFields = getFactoryFields(document._type._schema, 'Image');
 
     // If file fields exist
     if (fileFields.length > 0 || imageFields.length > 0) {
@@ -65,7 +66,10 @@ export const delete_item = {
       );
 
       // Remove files
-      await mapAsync(files, async (file: string) => await removeFile(file));
+      await mapAsync(
+        files,
+        async (file: string) => await removeFile(file, trx),
+      );
     }
 
     // Get parent

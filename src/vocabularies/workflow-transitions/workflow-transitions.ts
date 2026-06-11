@@ -1,6 +1,6 @@
 /**
  * Workflows transitions vocabulary.
- * @module vocabularies/workflows-transitions/workflows-transitions
+ * @module vocabularies/workflow-transitions/workflow-transitions
  */
 
 // Type imports

@@ -1,6 +1,6 @@
 /**
  * IndexCollection.
- * @module collection/index/index
+ * @module collections/index/index
  */
 
 // Type imports

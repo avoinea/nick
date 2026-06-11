@@ -10,10 +10,9 @@ I'm really glad you're reading this, because contributions are always welcome!
 
 Here are some important resources you can use to get familiar with Nick:
 
-- [Official Website](https://nickcms.org) contains generic information
-- [Documentation](https://docs.nickcms.org) has our Rest API documentation
-- [Online Demo](https://demo.nickcms.org) can be used to play around with Nick
-- [Issue Tracker](https://github.com/robgietema/nick/issues) is where you report
+- [Documentation](https://nick.docs.plone.org) has our Rest API documentation
+- [Online Demo](https://nick.demo.plone.org) can be used to play around with Nick
+- [Issue Tracker](https://github.com/plone/nick/issues) is where you report
   bugs and feature requests
 
 ## Translations
@@ -28,11 +27,11 @@ command. This command also builds the language files for use with Nick.
 We have several unit and integration tests in place which cover most of the
 code. Of course this can be improved and more tests are always welcome. If you
 do any manual testing feel free to submit a bug or feature request in our
-[Issue Tracker](https://github.com/robgietema/nick/issues) on Github.
+[Issue Tracker](https://github.com/plone/nick/issues) on Github.
 
 ## Submitting changes
 
-Please send a [Pull Request](https://github.com/robgietema/nick/pulls) with a
+Please send a [Pull Request](https://github.com/plone/nick/pulls) with a
 clear list of what you've done. We can always use more test coverage so don't be
 shy to add them. Please follow our coding conventions (below) and make sure all
 of your commits are atomic (one feature per commit). Always write a clear log

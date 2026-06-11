@@ -1,6 +1,6 @@
 /**
- * Generate routes.
- * @module routes/generate/generate
+ * AI routes.
+ * @module routes/ai/ai
  */
 
 // Type imports

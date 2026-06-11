@@ -130,6 +130,10 @@
 - Add scheduled jobs @robgietema
 - Add job queue runner @robgietema
 - Add translations from Polyglot project @erral
+- Add replace endpoint @robgietema
+- Add health check endpoint @robgietema
+- Add xss filtering for html blocks @robgietema
+- Add s3 storage support @robgietema
 
 ### Bugfix
 
@@ -206,6 +210,8 @@
 - Fix from address in email handlers @robgietema
 - Fix related items bug @robgietema
 - Bff fixes for Aurora @sneridagh
+- Fix issue with package resolve when using Nick as a dep @robgietema
+- Fix a bug when editing the root document @mpalomaki
 
 ### Internal
 
@@ -256,6 +262,7 @@
 - Refactor models to use profile init @robgietema
 - Rename default profile to examplecontent @robgietema
 - Fix initialization for client @robgietema
+- Save controlpanel and userschema files as blobs @robgietema
 
 ### Documentation
 

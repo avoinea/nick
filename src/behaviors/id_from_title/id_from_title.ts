@@ -23,10 +23,9 @@ interface Document {
 export const id_from_title = {
   /**
    * Set id
-   * @method getId
+   * @method setId
    * @param {string} id Provided id (can be empty)
    * @param {Array} blacklist Blacklist ids
-   * @returns {string} Id
    */
   setId: function (this: Document, id?: string, blacklist?: string[]): void {
     this.id = uniqueId(

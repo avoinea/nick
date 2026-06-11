@@ -14,7 +14,12 @@ import slugify from 'slugify';
 
 // Internal imports
 import contentRules from '../../content_rules';
-import { handleFiles, handleImages } from '../../helpers/content/content';
+import {
+  handleBlocks,
+  handleFiles,
+  handleImages,
+  handleRelationLists,
+} from '../../helpers/content/content';
 import { RequestException } from '../../helpers/error/error';
 import { stripI18n } from '../../helpers/i18n/i18n';
 import { apiLimiter } from '../../helpers/limiter/limiter';
@@ -317,8 +322,10 @@ export default [
       const controlpanel = await Controlpanel.fetchById(req.params.id, {}, trx);
 
       // Handle images
-      json = await handleFiles(json, controlpanel, trx);
-      json = await handleImages(json, controlpanel, trx);
+      json = await handleBlocks(json);
+      json = await handleFiles(json, controlpanel.schema, trx);
+      json = await handleImages(json, controlpanel.schema, trx);
+      json = await handleRelationLists(json, controlpanel.schema);
 
       await Controlpanel.update(
         req.params.id,

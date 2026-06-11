@@ -35,9 +35,9 @@ Next step is setup the AI models in the config. You can do so by adding followin
 export const config = {
   ...
   profiles: [
-    '@robgietema/nick:core',
-    '@robgietema/nick:ai',
-    '@robgietema/nick:default',
+    '@plone/nick:core',
+    '@plone/nick:ai',
+    '@plone/nick:default',
   ],
   ...
   ai: {

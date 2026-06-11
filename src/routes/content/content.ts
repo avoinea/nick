@@ -11,7 +11,7 @@ import type { Knex } from 'knex';
 import express from 'express';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { drop, flattenDeep, intersection, uniq } from 'es-toolkit/array';
+import { drop, intersection } from 'es-toolkit/array';
 import { omit, pick } from 'es-toolkit/object';
 import { v4 as uuid } from 'uuid';
 
@@ -22,12 +22,13 @@ import config from '../../helpers/config/config';
 import {
   getComponents,
   handleBlockReferences,
+  handleBlocks,
   handleFiles,
   handleImages,
   handleRelationLists,
 } from '../../helpers/content/content';
 import { RequestException } from '../../helpers/error/error';
-import { readFile, removeFile } from '../../helpers/fs/fs';
+import { readFile } from '../../helpers/fs/fs';
 import { lockExpired } from '../../helpers/lock/lock';
 import { getRootUrl } from '../../helpers/url/url';
 import { mapAsync, uniqueId, bytesToNumber } from '../../helpers/utils/utils';
@@ -626,9 +627,11 @@ export default [
       };
 
       // Handle files, images and relation lists
-      json = await handleFiles(json, type, trx);
-      json = await handleImages(json, type, trx);
-      json = await handleRelationLists(json, req.type);
+      const schema = type._schema;
+      json = await handleBlocks(json);
+      json = await handleFiles(json, schema, trx);
+      json = await handleImages(json, schema, trx);
+      json = await handleRelationLists(json, schema);
 
       // Create new document
       let document = Document.fromJson({
@@ -782,13 +785,16 @@ export default [
 
       // Get id and path variables of document, parent and siblings
       await req.document.fetchRelated('_parent', trx);
-      await req.document._parent.fetchChildren({}, trx, false);
-      const id = req.body.id || req.document.id;
+      if (req.document._parent) {
+        await req.document._parent.fetchChildren({}, trx, false);
+      }
       const path = req.document.path;
+      const id =
+        path === '/' ? req.document.id : req.body.id || req.document.id;
 
       // Get unique id if id has changed
       const newId =
-        req.body.id && req.body.id !== req.document.id
+        req.body.id && req.body.id !== req.document.id && path !== '/'
           ? uniqueId(
               id,
               req.document._parent._children.map(
@@ -811,9 +817,11 @@ export default [
           omitProperties,
         ),
       };
-      json = await handleFiles(json, req.type, trx);
-      json = await handleImages(json, req.type, trx);
-      json = await handleRelationLists(json, req.type);
+      const schema = config.settings.userschema(req);
+      json = await handleBlocks(json);
+      json = await handleFiles(json, schema, trx);
+      json = await handleImages(json, schema, trx);
+      json = await handleRelationLists(json, schema);
 
       // Create new version
       const modified = dayjs.utc().format();
@@ -872,12 +880,6 @@ export default [
 
       // Reindex document
       await req.document.reindex(trx);
-
-      // Get document json
-      const documentJson = await req.document.toJson(
-        req,
-        await getComponents(req, trx, req.query?.expand?.split(',') || []),
-      );
 
       // Trigger onAfterModified
       await events.trigger('onAfterModified', req.document, req.user, trx, req);

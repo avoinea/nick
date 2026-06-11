@@ -15,7 +15,12 @@ import { promises as fs } from 'fs';
 import { v4 as uuid } from 'uuid';
 
 // Internal imports
-import { handleFiles, handleImages } from '../../helpers/content/content';
+import {
+  handleBlocks,
+  handleFiles,
+  handleImages,
+  handleRelationLists,
+} from '../../helpers/content/content';
 import { dirExists } from '../../helpers/fs/fs';
 import { stripI18n } from '../../helpers/i18n/i18n';
 import { mapAsync } from '../../helpers/utils/utils';
@@ -91,18 +96,21 @@ export const seedDocument = async (
 
       // Handle files and images
       const type = await Type.fetchById(document.type || 'Page', {}, trx);
+      const schema = type._schema;
+      document = await handleBlocks(document);
       document = await handleFiles(
         document,
-        type,
+        schema,
         trx,
         `${profilePath}/documents`,
       );
       document = await handleImages(
         document,
-        type,
+        schema,
         trx,
         `${profilePath}/documents`,
       );
+      document = await handleRelationLists(document, schema);
 
       const newUuid = document.uuid || uuid();
 

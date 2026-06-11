@@ -5,6 +5,7 @@
 
 // Type imports
 import type { Params, Request } from '../../types';
+import { getFactoryFields } from '../../helpers/schema/schema';
 
 export const file_extension = {
   getTitle: (req: Request) => req.i18n('File Extension'),
@@ -41,8 +42,8 @@ export const file_extension = {
   ) => {
     await document.fetchRelated('_type');
 
-    const fileFields = await document._type.getFactoryFields('File');
-    const imageFields = await document._type.getFactoryFields('Image');
+    const fileFields = getFactoryFields(document._type._schema, 'File');
+    const imageFields = getFactoryFields(document._type._schema, 'Image');
     const checks = [...fileFields, ...imageFields].map((field) => {
       const value = document.json[field];
       if (value && typeof value === 'object' && 'filename' in value) {

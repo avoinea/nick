@@ -20,16 +20,18 @@ export type Message =
     };
 
 /**
- * Base collection used to extend collections from.
- * @class Collection
+ * Request exception class.
+ * @class RequestException
  */
 export class RequestException {
   status: Status;
   message: Message;
 
   /**
-   * Construct a Collection.
-   * @constructs Collection
+   * Construct a RequestException.
+   * @constructs RequestException
+   * @param {Status} status The HTTP status code.
+   * @param {Message} message The error message.
    */
   constructor(status: Status, message: Message) {
     this.status = status;

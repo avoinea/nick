@@ -13,7 +13,7 @@ Content-Type: application/json
     "debug": true,
     "secure": true,
     "email_from_name": "Webmaster",
-    "email_from_address": "webmaster@nickcms.org"
+    "email_from_address": "webmaster@plone.org"
   },
   "schema": {
     "required": ["host", "port", "email_from_name", "email_from_address"],

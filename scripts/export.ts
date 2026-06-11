@@ -22,7 +22,7 @@ const writeMetadata = (path: string, profile: string) => {
     `${path}/metadata.json`,
     JSON.stringify(
       {
-        id: `@robgietema/nick:${profile}`,
+        id: `@plone/nick:${profile}`,
         title: 'Migrated Content',
         description: 'Migrated Content from external system',
         version: 1000,

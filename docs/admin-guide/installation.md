@@ -175,18 +175,18 @@ If you see a version number (e.g., `8.15.0`), pnpm is installed.
 yo --generators
 ```
 
-If you see `@robgietema/nick` in the list, the Nick generator is installed.
+If you see `@plone/nick` in the list, the Nick generator is installed.
 
 If all three checks pass, you can skip to [Step 2: Create Your Project](#step-2-create-your-project).
 
 ### What are these tools?
 
-| Tool                           | What it does                                                                                       |
-| ------------------------------ | -------------------------------------------------------------------------------------------------- |
-| **Yeoman (yo)**                | A scaffolding tool — it asks you questions and generates a project structure based on your answers |
-| **@robgietema/generator-nick** | The Nick-specific template that Yeoman uses to create your project                                 |
-| **corepack**                   | A Node.js tool for managing package managers like pnpm                                             |
-| **pnpm**                       | A fast, disk-efficient package manager (alternative to npm)                                        |
+| Tool                      | What it does                                                                                       |
+| ------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Yeoman (yo)**           | A scaffolding tool — it asks you questions and generates a project structure based on your answers |
+| **@plone/generator-nick** | The Nick-specific template that Yeoman uses to create your project                                 |
+| **corepack**              | A Node.js tool for managing package managers like pnpm                                             |
+| **pnpm**                  | A fast, disk-efficient package manager (alternative to npm)                                        |
 
 #### Why is it called Yeoman?
 
@@ -207,7 +207,7 @@ Run each command and wait for it to complete before running the next:
 npm install -g yo
 
 # Install the Nick generator for Yeoman
-npm install -g @robgietema/generator-nick
+npm install -g @plone/generator-nick
 
 # Install corepack (manages pnpm)
 npm install -g corepack@latest
@@ -236,7 +236,7 @@ You should see something like `8.15.0` or higher.
 yo --generators
 ```
 
-You should see `@robgietema/nick` in the list of available generators.
+You should see `@plone/nick` in the list of available generators.
 
 If any of these commands fail, see the troubleshooting section below.
 
@@ -257,7 +257,7 @@ source ~/.bashrc
 
 ```bash
 sudo npm install -g yo
-sudo npm install -g @robgietema/generator-nick
+sudo npm install -g @plone/generator-nick
 sudo npm install -g corepack@latest
 sudo corepack enable pnpm
 ```
@@ -303,7 +303,7 @@ See [PostgreSQL Naming Conventions](./postgresql-naming-conventions.md) for deta
 
 ```bash
 # Replace "my_nick_project" with your chosen name
-yo @robgietema/nick my_nick_project
+yo @plone/nick my_nick_project
 ```
 
 Yeoman will:
@@ -591,12 +591,12 @@ sudo corepack enable pnpm
 npm install -g pnpm
 ```
 
-### "@robgietema/nick" not in generator list
+### "@plone/nick" not in generator list
 
 The generator wasn't installed correctly. Try reinstalling:
 
 ```bash
-npm install -g @robgietema/generator-nick
+npm install -g @plone/generator-nick
 
 # Verify
 yo --generators | grep nick
@@ -635,17 +635,17 @@ Another application is using port 8080. Either:
 ```bash
 # 1. Install tools
 npm install -g yo
-npm install -g @robgietema/generator-nick
+npm install -g @plone/generator-nick
 npm install -g corepack@latest
 corepack enable pnpm
 
 # 2. Verify tools installed correctly
 yo --version              # Should show 4.x.x
 pnpm --version            # Should show 8.x.x
-yo --generators | grep nick  # Should show @robgietema/nick
+yo --generators | grep nick  # Should show @plone/nick
 
 # 3. Create project
-yo @robgietema/nick my_nick_project
+yo @plone/nick my_nick_project
 
 # 4. Create database (in psql)
 # CREATE DATABASE my_nick_project;

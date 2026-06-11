@@ -35,6 +35,7 @@ import { generate, embed } from '../../helpers/ai/ai';
 import config from '../../helpers/config/config';
 import { copyFile, removeFile } from '../../helpers/fs/fs';
 import { lockExpired } from '../../helpers/lock/lock';
+import { getFactoryFields } from '../../helpers/schema/schema';
 import { getRootUrl } from '../../helpers/url/url';
 import {
   isPromise,
@@ -292,7 +293,10 @@ export class Document extends Model {
     }
 
     // Loop through relation list fields
-    const relationListFields = self._type.getFactoryFields('Relation List');
+    const relationListFields = getFactoryFields(
+      self._type._schema,
+      'Relation List',
+    );
     await Promise.all(
       relationListFields.map(async (field: string) => {
         // Check if related documents
@@ -495,7 +499,7 @@ export class Document extends Model {
     // Check if type available
     if (self._type) {
       // Loop through file fields
-      const fileFields = self._type.getFactoryFields('File');
+      const fileFields = getFactoryFields(self._type._schema, 'File');
       mapSync(fileFields, (field: string) => {
         // Set data
         if (json[field]) {
@@ -509,7 +513,7 @@ export class Document extends Model {
       });
 
       // Loop through image fields
-      const imageFields = self._type.getFactoryFields('Image');
+      const imageFields = getFactoryFields(self._type._schema, 'Image');
       mapSync(imageFields, (field: string) => {
         // Set data
         if (json[field]) {
@@ -534,7 +538,10 @@ export class Document extends Model {
       });
 
       // Loop through relation list fields
-      const relationListFields = self._type.getFactoryFields('Relation List');
+      const relationListFields = getFactoryFields(
+        self._type._schema,
+        'Relation List',
+      );
       mapSync(relationListFields, async (field: string) => {
         // Check if related documents
         if (
@@ -827,8 +834,8 @@ export class Document extends Model {
 
     // Store used uuids
     const fileUuid: Record<string, string> = {};
-    const fileFields = self._type.getFactoryFields('File');
-    const imageFields = self._type.getFactoryFields('Image');
+    const fileFields = getFactoryFields(self._type._schema, 'File');
+    const imageFields = getFactoryFields(self._type._schema, 'Image');
 
     // Copy files
     const copyFiles = async () =>
@@ -1006,7 +1013,7 @@ export class Document extends Model {
 
     // Add vision data if enabled
     if (config.settings.ai?.models?.vision?.enabled) {
-      const imageFields = await self._type.getFactoryFields('Image');
+      const imageFields = getFactoryFields(self._type._schema, 'Image');
 
       imageFields.map((field: string) => {
         chunks.push(self.json[field].text);
@@ -1014,7 +1021,7 @@ export class Document extends Model {
     }
 
     // Add text from indexed files
-    const fileFields = await self._type.getFactoryFields('File');
+    const fileFields = getFactoryFields(self._type._schema, 'File');
     fileFields.map((field: string) => {
       chunks.push(self.json[field].text);
     });
@@ -1058,11 +1065,11 @@ export class Document extends Model {
    */
   mimeType(): string | undefined {
     const self: InstanceType<typeof Document> = this;
-    const imageFields = self._type.getFactoryFields('Image');
+    const imageFields = getFactoryFields(self._type._schema, 'Image');
     if (imageFields.length > 0) {
       return self.json[imageFields[0]]?.['content-type'];
     }
-    const fileFields = self._type.getFactoryFields('File');
+    const fileFields = getFactoryFields(self._type._schema, 'File');
     if (fileFields.length > 0) {
       return self.json[fileFields[0]]?.['content-type'];
     }
@@ -1117,8 +1124,10 @@ export class Document extends Model {
     const self: InstanceType<typeof Document> = this;
 
     // Get file fields
-    const relationListFields =
-      await self._type.getFactoryFields('Relation List');
+    const relationListFields = getFactoryFields(
+      self._type._schema,
+      'Relation List',
+    );
 
     // Return allowed
     return flatten(
@@ -1190,8 +1199,11 @@ export class Document extends Model {
   async getImageScales(trx?: Knex.Transaction): Promise<any> {
     const self: InstanceType<typeof Document> = this;
     const image_scales: any = {};
-    const relationChoiceFields = self._type.getFactoryFields('Relation Choice');
-    const imageFields = self._type.getFactoryFields('Image');
+    const relationChoiceFields = getFactoryFields(
+      self._type._schema,
+      'Relation Choice',
+    );
+    const imageFields = getFactoryFields(self._type._schema, 'Image');
 
     const addDownload = (field: any) => {
       return {
@@ -1414,7 +1426,7 @@ export class Document extends Model {
   /**
    * Fetch children.
    * @method fetchChildren
-   * @param {Any} req Request object.
+   * @param {any} _req Request object.
    * @param {Knex.Transaction} trx Transaction object.
    * @param {boolean} types Flag to include types in the output.
    * @return {Promise<void>} No return value.
@@ -1572,8 +1584,8 @@ END:VEVENT`;
     }
 
     // Get file and image fields
-    const fileFields = self._type.getFactoryFields('File');
-    const imageFields = self._type.getFactoryFields('Image');
+    const fileFields = getFactoryFields(self._type._schema, 'File');
+    const imageFields = getFactoryFields(self._type._schema, 'Image');
 
     // If file fields exist
     if (fileFields.length > 0 || imageFields.length > 0) {
@@ -1596,7 +1608,7 @@ END:VEVENT`;
       );
 
       // Remove files
-      await mapAsync(files, async (file: any) => await removeFile(file));
+      await mapAsync(files, async (file: any) => await removeFile(file, trx));
     }
   }
 

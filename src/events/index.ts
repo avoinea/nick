@@ -32,8 +32,8 @@ class Events {
   static instance: Events;
 
   /**
-   * Construct a Config.
-   * @constructs Config
+   * Construct a Events.
+   * @constructs Events
    */
   constructor() {
     this.events = {};
@@ -67,11 +67,11 @@ class Events {
 
   /**
    * Trigger an event.
-   * @param {string} name The name of the event.
-   * @param {Object} document The document related to the event.
-   * @param {Object} user The user related to the event.
+   * @param {string} event The name of the event.
+   * @param {any} document The document related to the event.
+   * @param {any} user The user related to the event.
    * @param {Knex.Transaction} trx The transaction related to the event.
-   * @param {...any} params Additional parameters to pass to the event handlers.
+   * @param {any[]} params Additional parameters to pass to the event handlers.
    * @returns {Promise<void>} A promise that resolves when all event handlers have been executed.
    */
   async trigger(

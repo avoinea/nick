@@ -1,5 +1,5 @@
 {
-  "id": "@robgietema/nick:default",
+  "id": "@plone/nick:default",
   "title": "Nick Example Content",
   "description": "Example content of Nick",
   "version": 1000

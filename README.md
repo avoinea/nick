@@ -2,21 +2,21 @@
 
 ## Introduction
 
-[Nick](http://nickcms.org) is a (nearly) headless CMS written in Node.js which provides a RESTful hypermedia API. The API is compatible with the [REST API](https://plonerestapi.readthedocs.io/en/latest/) of the [Plone CMS](http://plone.org) and can be used together with the web frontend [Volto](https://voltocms.com/).
+[Nick](https://nick.docs.plone.org) is a (nearly) headless CMS written in Node.js which provides a RESTful hypermedia API. The API is compatible with the [REST API](https://plonerestapi.readthedocs.io/en/latest/) of the [Plone CMS](http://plone.org) and can be used together with the web frontend [Volto](https://voltocms.com/).
 
 ## Documentation
 
-[https://docs.nickcms.org](https://docs.nickcms.org)
+[https://nick.docs.plone.org](https://nick.docs.plone.org)
 
 ## Getting started
 
 A live demo of Nick with the latest release is available at:
 
-[https://demo.nickcms.org](https://demo.nickcms.org)
+[https://nick.demo.plone.org](https://nick.demo.plone.org)
 
 Example `GET` request on the portal root
 
-    curl -i https://demo.nickcms.org -H "Accept: application/json"
+    curl -i https://nick.demo.plone.org -H "Accept: application/json"
 
 ## Installation
 
@@ -53,16 +53,16 @@ If you want to create your own project and use Nick as a dependency you can use 
 
 ### Installation
 
-First, install [Yeoman](http://yeoman.io) and @robgietema/generator-nick using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and @plone/generator-nick using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
     $ npm install -g yo
-    $ npm install -g @robgietema/generator-nick
+    $ npm install -g @plone/generator-nick
     $ npm install -g corepack@latest
     $ corepack enable pnpm
 
 ### Creating a new project
 
-    $ yo @robgietema/nick my-nick-project
+    $ yo @plone/nick my-nick-project
 
 This will bootstrap a new Nick project inside the current folder.
 
@@ -106,15 +106,15 @@ docker compose down
 
 ## Contribute
 
-- Issue tracker: [https://github.com/robgietema/nick/issues](https://github.com/robgietema/nick/issues)
-- Source Code: [https://github.com/robgietema/nick](https://github.com/robgietema/nick)
-- Documentation [https://docs.nickcms.org](https://docs.nickcms.org)
+- Issue tracker: [https://github.com/plone/nick/issues](https://github.com/plone/nick/issues)
+- Source Code: [https://github.com/plone/nick](https://github.com/plone/nick)
+- Documentation [https://nick.docs.plone.org](https://nick.docs.plone.org)
 
 ## Support
 
-If you are having issues, please let us know via the [issue tracker](https://github.com/robgietema/nick/issues).
+If you are having issues, please let us know via the [issue tracker](https://github.com/plone/nick/issues).
 
 ## License
 
-MIT License. Copyrights hold Rob Gietema.
+MIT License. Copyrights hold Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.

@@ -1,5 +1,5 @@
 {
-  "id": "@robgietema/nick:ai",
+  "id": "@plone/nick:ai",
   "title": "Nick AI",
   "description": "AI functionality for Nick",
   "version": 1000

@@ -3,6 +3,9 @@
  * @module types
  */
 
+// Type imports
+import type { IFilterXSSOptions } from 'xss';
+
 // External imports
 import express from 'express';
 import { Knex } from 'knex';
@@ -37,6 +40,7 @@ export type MiddlewareHandler = (
 
 export type Block = {
   toMarkdown: (self: any, document: any) => string;
+  process: (self: any) => Promise<any>;
 };
 
 export interface DeleteInfo {
@@ -295,8 +299,14 @@ export type ConfigSettings = {
     user: string;
     password: string;
   };
-  blobs: 'file' | 'db';
+  blobs: 'file' | 'db' | 's3';
   blobsDir: string;
+  s3: {
+    bucket: string;
+    region: string;
+    accessKeyId: string;
+    secretAccessKey: string;
+  };
   localesDir: string;
   port: number;
   secret: string;
@@ -310,7 +320,12 @@ export type ConfigSettings = {
     exposeHeaders: string;
     maxAge: number;
   };
+  xss: IFilterXSSOptions;
   imageScales: Record<string, [number, number]>;
+  health: {
+    long_running: number;
+    stalled: number;
+  };
   frontendUrl: string;
   prefix: string;
   userRegistration: boolean;
@@ -373,5 +388,5 @@ export type ConfigSettings = {
     api: string;
     chunk: string;
   };
-  userschema?: (req: Request) => any;
+  userschema: (req: Request) => Schema;
 };

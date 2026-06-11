@@ -30,7 +30,7 @@ export function hasPermission(
 
 /**
  * Get user based on token.
- * @method getUser
+ * @method getUserId
  * @param {Object} req Request object.
  * @returns {string} User id.
  */
@@ -56,14 +56,15 @@ export function getUserId(req: Request): string | undefined {
 /**
  * Add jwt token to user
  * @method addToken
+ * @param {User} user User object.
  * @param {string} token Token to be added.
- * @param {Request} req Request object.
+ * @param {Knex.Transaction} trx Knex Transaction
  */
 export async function addToken(
   user: User,
   token: string,
   trx: Knex.Transaction,
-): Promise<undefined> {
+): Promise<void> {
   // Get tokens
   let tokens = user.tokens || [];
 
@@ -87,8 +88,9 @@ export async function addToken(
 /**
  * Remove jwt token from user
  * @method removeToken
- * @param {string} token Token to be removed.
  * @param {User} user User object.
+ * @param {string} token Token to be removed.
+ * @param {Knex.Transaction} trx Knex Transaction
  */
 export async function removeToken(
   user: User,

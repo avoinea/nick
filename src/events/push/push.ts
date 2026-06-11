@@ -1,6 +1,6 @@
 /**
  * Push events
- * @module push/push
+ * @module events/push/push
  */
 
 // Internal imports

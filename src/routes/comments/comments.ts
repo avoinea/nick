@@ -1,6 +1,6 @@
 /**
- * Lock routes.
- * @module routes/lock/lock
+ * Comments routes.
+ * @module routes/comments/comments
  */
 
 // Type imports
@@ -32,7 +32,7 @@ type Comment = {
 /**
  * Recursively find children of parent
  * @param {Comments[]} comments Array of comments
- * @param id Id of the parent
+ * @param {string} parent Id of the parent
  * @returns {string[]} List of children id
  */
 function findChildren(comments: Comment[], parent: string): string[] {

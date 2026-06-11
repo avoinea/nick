@@ -37,7 +37,7 @@
         "entityMap": {
           "0": {
             "data": {
-              "url": "https://nickcms.org"
+              "url": "https://nick.docs.plone.org"
             },
             "type": "LINK",
             "mutability": "MUTABLE"
@@ -96,7 +96,7 @@
         "entityMap": {
           "0": {
             "data": {
-              "url": "https://nickcms.org"
+              "url": "https://nick.docs.plone.org"
             },
             "type": "LINK",
             "mutability": "MUTABLE"

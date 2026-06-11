@@ -4,6 +4,7 @@
  */
 
 // External imports
+import { compact } from 'es-toolkit/array';
 import { mapValues } from 'es-toolkit/object';
 import { isUndefined } from 'es-toolkit/compat';
 
@@ -109,4 +110,21 @@ export function schemaToHtml(schema: Schema, data: any): string {
         `<table>${fieldset.id === 'default' ? '' : `<tr><th colspan="2">${fieldset.title}</th>`}</tr>${fieldset.fields.map((field) => `<tr><th>${schema.properties?.[field].title || ''}</th><td>${isUndefined(data[field]) ? '' : data[field]}</td></tr>`).join('\n')}</table>`,
     )
     .join('\n');
+}
+
+/**
+ * Get factory fields.
+ * @method getFactoryFields
+ * @param {Schema} schema Schema object.
+ * @param {string} factory Factory field.
+ * @returns {string[]} Array of fields with given factory.
+ */
+export function getFactoryFields(schema: Schema, factory: string): string[] {
+  const properties: any = schema.properties || {};
+
+  // Get factory fields
+  const factoryFields = Object.keys(properties).map((property) =>
+    properties[property].factory === factory ? property : false,
+  );
+  return compact(factoryFields) as string[];
 }

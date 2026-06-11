@@ -19,6 +19,12 @@ export const config = {
   },
   blobs: 'file',
   blobsDir: `${__dirname}/var/blobstorage`,
+  s3: {
+    bucket: 'my-bucket-name',
+    region: 'my-region',
+    accessKeyId: 'my-access-key-id>',
+    secretAccessKey: 'my-secret-access-key',
+  },
   localesDir: `${__dirname}/src/develop/nick/locales`,
   port: 8080,
   secret: 'secret',
@@ -32,6 +38,7 @@ export const config = {
     exposeHeaders: '*',
     maxAge: 3660,
   },
+  xss: { stripIgnoreTagBody: ['script'] },
   imageScales: {
     large: [768, 768],
     preview: [400, 400],
@@ -41,15 +48,19 @@ export const config = {
     icon: [32, 32],
     listing: [16, 16],
   },
+  health: {
+    long_running: 3,
+    stalled: 30,
+  },
   frontendUrl: 'http://localhost:3000',
   prefix: '',
   userRegistration: true,
   profiles: [
-    '@robgietema/nick:core',
-    /* '@robgietema/nick:ai', */
+    '@plone/nick:core',
+    /* '@plone/nick:ai', */
     '<%= projectName %>:default',
-    /* '@robgietema/nick:multilingual', */
-    /* '@robgietema/nick:multilingualcontent', */
+    /* '@plone/nick:multilingual', */
+    /* '@plone/nick:multilingualcontent', */
   ],
   push: {
     enabled: false,

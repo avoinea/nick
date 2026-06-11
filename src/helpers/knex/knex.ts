@@ -1,6 +1,6 @@
 /**
  * Knex setup.
- * @module knex
+ * @module helpers/knex/knex
  */
 
 // External imports
@@ -23,7 +23,7 @@ knex.on('query', (query: Knex.QueryBuilder) => {
 /**
  * Get postgres version
  * @method getPostgresVersion
- * @param {Transaction} trx Transaction object
+ * @param {Knex.Transaction} trx Transaction object
  * @returns {Promise<string>} Postgres version.
  */
 export async function getPostgresVersion(

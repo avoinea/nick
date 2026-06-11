@@ -7,7 +7,7 @@ nav_exclude: true
 
 ## What is Nick?
 
-[Nick](http://nickcms.org) is a (nearly) headless CMS built with Node.js that provides a RESTful hypermedia API. It is created by **Rob Gietema**, the original creator of Volto (the React frontend for Plone). The API is compatible with the [REST API](https://plonerestapi.readthedocs.io/en/latest/) of the [Plone CMS](http://plone.org) and can be used together with the web frontend [Volto](https://voltocms.com/).
+[Nick](https://nick.docs.plone.org) is a (nearly) headless CMS built with Node.js that provides a RESTful hypermedia API. It is created by **Rob Gietema**, the original creator of Volto (the React frontend for Plone). The API is compatible with the [REST API](https://plonerestapi.readthedocs.io/en/latest/) of the [Plone CMS](http://plone.org) and can be used together with the web frontend [Volto](https://voltocms.com/).
 
 ### The Name
 
@@ -15,11 +15,10 @@ The name "Nick" comes from **"Nearly Headless Nick"** — a ghost character in t
 
 The joke: Traditional CMSs have a "head" (the frontend that renders pages). "Headless" CMSs remove the frontend entirely, providing only an API. Nick is _nearly_ headless — it provides the full backend structure of a CMS (content hierarchy, workflows, permissions, versioning) but without the template-driven frontend of traditional CMSs like WordPress or Plone Classic. You bring your own "head" (frontend) — typically Volto, but any application that speaks the API works.
 
-**Website:** [nickcms.org](https://nickcms.org)  
-**Demo:** [demo.nickcms.org](https://demo.nickcms.org)  
-**Documentation:** [docs.nickcms.org](https://docs.nickcms.org)
-**Source Code:** [github.com/robgietema/nick](https://github.com/robgietema/nick)  
-**Issue tracker:** [github.com/robgietema/nick/issues](https://github.com/robgietema/nick/issues).
+**Demo:** [nick.demo.plone.org](https://nick.demo.plone.org)  
+**Documentation:** [nick.docs.plone.org](https://nick.docs.plone.org)
+**Source Code:** [github.com/plone/nick](https://github.com/plone/nick)  
+**Issue tracker:** [github.com/plone/nick/issues](https://github.com/plone/nick/issues).
 **License:** MIT
 
 ---

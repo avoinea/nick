@@ -18,8 +18,8 @@ class Blocks {
   static instance: Blocks;
 
   /**
-   * Construct a Config.
-   * @constructs Config
+   * Construct a Block.
+   * @constructs Block
    */
   constructor() {
     this.blocks = {};
@@ -49,7 +49,10 @@ class Blocks {
     if (!this.blocks[name]) {
       return this.blocks['_default'];
     }
-    return this.blocks[name];
+    return {
+      ...this.blocks['_default'],
+      ...this.blocks[name],
+    };
   }
 }
 

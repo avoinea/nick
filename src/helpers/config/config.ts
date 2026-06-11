@@ -38,7 +38,7 @@ let config: any = {};
 if (fs.existsSync(`${process.cwd()}/config.ts`)) {
   config = (await import(`${process.cwd()}/config`)).config;
 }
-const packageEntry = fileURLToPath(import.meta.resolve('@robgietema/nick'));
+const packageEntry = fileURLToPath(import.meta.resolve('@plone/nick'));
 const packageRoot = path.dirname(packageEntry);
 
 /**
@@ -66,6 +66,12 @@ class Config {
       blobs: config.blobs || 'file',
       blobsDir:
         BLOBS_DIR || config.blobsDir || `${__dirname}/../../../var/blobstorage`,
+      s3: config.s3 || {
+        bucket: 'my-bucket',
+        region: 'my-region',
+        accessKeyId: 'my-access-key-id',
+        secretAccessKey: 'my-secret-access-key',
+      },
       localesDir:
         LOCALES_DIR || config.localesDir || `${__dirname}/../../../locales`,
       port: config.port || 8080,
@@ -86,6 +92,7 @@ class Config {
           config.cors?.exposeHeaders || 'Content-Length,Content-Type',
         maxAge: config.cors?.maxAge || 3600,
       },
+      xss: config.xss || { stripIgnoreTagBody: ['script'] },
       imageScales: config.imageScales || {
         large: [768, 768],
         preview: [400, 400],
@@ -95,13 +102,14 @@ class Config {
         icon: [32, 32],
         listing: [16, 16],
       },
+      health: config.health || {
+        long_running: 3,
+        stalled: 30,
+      },
       frontendUrl: config.frontendUrl || 'http://localhost:3000',
       prefix: config.prefix || '',
       userRegistration: config.userRegistration || false,
-      profiles: config.profiles || [
-        '@robgietema/nick:core',
-        '@robgietema/nick:default',
-      ],
+      profiles: config.profiles || ['@plone/nick:core', '@plone/nick:default'],
       requestLimit: config.requestLimit || {
         api: '1mb',
         files: '10mb',
@@ -121,7 +129,6 @@ class Config {
         ),
       },
       recyclebin: config.recyclebin || false,
-      routes: config.routes || false,
       cache: config.cache || {
         enabled: false,
         anonymousOnly: true,

@@ -1,6 +1,6 @@
 /**
  * BehaviorCollection.
- * @module collection/behavior/behavior
+ * @module collections/behavior/behavior
  */
 
 // Type imports

@@ -64,7 +64,7 @@ export class Role extends Model {
 
   /**
    * Fetch permissions.
-   * @method fetchPermission
+   * @method fetchPermissions
    * @static
    * @param {string[]} roles Array of roles
    * @param {Knex.Transaction} trx Transaction object.

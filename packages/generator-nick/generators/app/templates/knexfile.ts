@@ -4,7 +4,7 @@
  */
 
 // External imports
-import config from '@robgietema/nick/src/helpers/config/config';
+import config from '@plone/nick/src/helpers/config/config';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
