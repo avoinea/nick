@@ -146,12 +146,12 @@ JSON response structures are nearly identical — same `@id`, `@type`, `@compone
 | Feature                   | Nick                 | Plone         |
 | ------------------------- | -------------------- | ------------- |
 | Hierarchical content tree | ✓                    | ✓             |
-| JSON Schema for types     | ✓                    | ✓ (Dexterity) |
+| JSON Schema for types     | ✓                    | ✓             |
 | Behaviors                 | ✓                    | ✓             |
 | Folderish content         | ✓                    | ✓             |
 | UID-based references      | ✓                    | ✓             |
 | Blocks (Volto)            | ✓                    | ✓             |
-| TTW type creation         | ✓ (via controlpanel) | ✓             |
+| TTW type creation         | ✓                    | ✓             |
 
 ---
 
@@ -174,11 +174,11 @@ Same role model: Anonymous, Authenticated, Owner, Reader, Contributor, Editor, R
 
 | Feature                       | Nick              | Plone                      |
 | ----------------------------- | ----------------- | -------------------------- |
-| Language roots (`/en`, `/nl`) | ✓                 | ✓ (plone.app.multilingual) |
+| Language roots (`/en`, `/nl`) | ✓                 | ✓                          |
 | `@translations` endpoint      | ✓                 | ✓                          |
 | Link/unlink translations      | ✓                 | ✓                          |
 | Navigation root per language  | ✓                 | ✓                          |
-| i18n for backend messages     | ✓ (~30 languages) | ✓ (many languages)         |
+| i18n for backend messages     | ✓                 | ✓                          |
 
 ---
 
@@ -261,43 +261,27 @@ One of Nick's most practical benefits is **JavaScript everywhere**.
 
 ### Plone + Volto: Two Languages
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Plone + Volto                            │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│   Frontend (Volto)              Backend (Plone)                 │
-│   ─────────────────             ───────────────                 │
-│   JavaScript / TypeScript       Python                          │
-│   React                         Zope                            │
-│   npm / pnpm / yarn             pip / buildout                  │
-│   Node.js runtime               Python runtime                  │
-│   Jest for testing              pytest for testing              │
-│                                                                 │
-│   Two languages, two toolchains, two mental models              │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+| Frontned (Volto)        | Backend (Plone)         |
+| ----------------------- | ----------------------- |
+│ JavaScript / TypeScript | Python                  │
+│ React                   | Zope                    │
+│ npm / pnpm / yarn       | pip / buildout          │
+│ Node.js runtime         | Python runtime          │
+│ Vitest for testing      | pytest for testing      │
+
+Two languages, two toolchains, two mental models
 
 ### Nick + Volto: One Language
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         Nick + Volto                            │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│   Frontend (Volto)              Backend (Nick)                  │
-│   ─────────────────             ──────────────                  │
-│   JavaScript / TypeScript       JavaScript                      │
-│   React                         Node.js / Express               │
-│   npm / pnpm                    npm / pnpm                      │
-│   Node.js runtime               Node.js runtime                 │
-│   Jest for testing              Jest for testing                │
-│                                                                 │
-│   One language, one toolchain, one mental model                 │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+| Frontned (Volto)        | Backend (Nick)          |
+| ----------------------- | ----------------------- |
+│ JavaScript / TypeScript | JavaScript              │
+│ React                   | Node.js / Express       │
+│ npm / pnpm              | npm / pnpm              │
+│ Node.js runtime         | Node.js runtime         │
+│ Vitest for testing      | Vitest for testing      │
+
+One language, one toolchain, one mental model
 
 ### Practical Benefits
 
