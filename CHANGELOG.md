@@ -279,6 +279,7 @@
 - Add documentation about how to setup health checks @robgietema
 - Add documentation about how to setup the recyclebin @robgietema
 - Add documentation on how to setup limits @robgietema
+- Add documentation on how to setup caching @robgietema
 
 ## 2.8.0 (2022-07-17)
 
