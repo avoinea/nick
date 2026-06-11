@@ -42,10 +42,15 @@ export function initI18n(): void {
   // Load i18n files
   intl = zipObject(
     languages,
-    languages.map((language) =>
-      createIntl(
+    languages.map((language) => {
+      const locale = language.replace('_', '-');
+      const supportedLocale =
+        Intl.NumberFormat.supportedLocalesOf(locale).length > 0
+          ? locale
+          : 'en';
+      return createIntl(
         {
-          locale: language,
+          locale: supportedLocale,
           messages: JSON.parse(
             fs.readFileSync(
               `${config.settings.localesDir}/${language}.json`,
@@ -54,8 +59,8 @@ export function initI18n(): void {
           ),
         },
         intlCache[language],
-      ),
-    ),
+      );
+    }),
   ) as Record<string, IntlShape>;
 }
 
