@@ -7,5 +7,6 @@ Content-Type: application/json
   "fullname": "Nearly Headless Nick",
   "email": "nearly.headless.nick@example.com",
   "roles": [],
+  "username": "headlessnick",
   "groups": []
 }

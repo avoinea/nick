@@ -12,6 +12,7 @@ Content-Type: application/json
     "roles": [
       "Administrator"
     ],
+    "username": "admin",
     "groups": []
   },
   {
@@ -22,6 +23,7 @@ Content-Type: application/json
     "roles": [
       "Anonymous"
     ],
+    "username": "anonymous",
     "groups": []
   }
 ]

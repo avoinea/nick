@@ -13,6 +13,7 @@ Content-Type: application/json
       "roles": [
         "Administrator"
       ],
+      "username": "admin",
       "groups": []
     }
   ],

@@ -91,6 +91,7 @@ export class User extends Model {
     return {
       '@id': `${getRootUrl(req)}/@users/${self.id}`,
       id: self.id,
+      username: self.id,
       fullname: self.fullname,
       email: self.email,
       roles: self._roles ? self._roles.map((role: any) => role.id) : [],

@@ -214,6 +214,7 @@
 - Fix issue with package resolve when using Nick as a dep @robgietema
 - Fix a bug when editing the root document @mpalomaki
 - Add position in parent to export script @robgietema
+- Return username in user endpoints @robgietema
 
 ### Internal
 
