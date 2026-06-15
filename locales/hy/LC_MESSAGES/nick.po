@@ -2076,7 +2076,7 @@ msgid "System group"
 msgstr "Համակարգային խումբ"
 
 #. Default: "System users"
-#: src/routes/users/users.ts:341
+#: src/routes/users/users.ts:354
 msgctxt "Routes|Users"
 msgid "System users"
 msgstr "Համակարգային օգտվողներ"
@@ -2734,7 +2734,7 @@ msgid "You can’t delete system groups."
 msgstr "Հնարավոր չէ ջնջել համակարգային խումբերը։"
 
 #. Default: "You can’t delete system users."
-#: src/routes/users/users.ts:340
+#: src/routes/users/users.ts:353
 msgctxt "Routes|Users"
 msgid "You can’t delete system users."
 msgstr "Հնարավոր չէ ջնջել համակարգային օգտվողները։"

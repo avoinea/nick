@@ -2076,7 +2076,7 @@ msgid "System group"
 msgstr "सिस्टम समूह"
 
 #. Default: "System users"
-#: src/routes/users/users.ts:341
+#: src/routes/users/users.ts:354
 msgctxt "Routes|Users"
 msgid "System users"
 msgstr "सिस्टम उपयोगकर्ता"
@@ -2734,7 +2734,7 @@ msgid "You can’t delete system groups."
 msgstr "आप सिस्टम समूहों को हटा नहीं सकते।"
 
 #. Default: "You can’t delete system users."
-#: src/routes/users/users.ts:340
+#: src/routes/users/users.ts:353
 msgctxt "Routes|Users"
 msgid "You can’t delete system users."
 msgstr "आप सिस्टम उपयोगकर्ताओं को हटा नहीं सकते।"

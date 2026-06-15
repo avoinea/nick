@@ -822,6 +822,7 @@ export default [
       json = await handleFiles(json, schema, trx);
       json = await handleImages(json, schema, trx);
       json = await handleRelationLists(json, schema);
+      json = { ...req.document.json, ...json };
 
       // Create new version
       const modified = dayjs.utc().format();

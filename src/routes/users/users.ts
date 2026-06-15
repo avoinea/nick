@@ -296,21 +296,34 @@ export default [
     cache: 'alter',
     handler: async (req: Request, trx: Knex.Transaction) => {
       const User = models.get('User');
+
+      // Make a copy
+      let json: any = omit(req.body, [
+        ...userFields,
+        'password',
+        'roles',
+        'groups',
+        'username',
+        'fullname',
+        'email',
+      ]);
+
+      const curUser = await User.fetchById(req.params.id, {}, trx);
+
+      // Handle images
+      const schema = config.settings.userschema(req);
+      json = await handleBlocks(json);
+      json = await handleFiles(json, schema, trx);
+      json = await handleImages(json, schema, trx);
+      json = await handleRelationLists(json, schema);
+
       const user = await User.update(
         req.params.id,
         {
           id: req.body.username,
           fullname: req.body.fullname,
           email: req.body.email,
-          json: omit(req.body, [
-            ...userFields,
-            'password',
-            'roles',
-            'groups',
-            'username',
-            'fullname',
-            'email',
-          ]),
+          json: { ...curUser.json, ...json },
           _roles: req.body.roles,
           _groups: req.body.groups,
         },
