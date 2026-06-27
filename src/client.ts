@@ -30,10 +30,11 @@ export class Client {
    * @static
    * @returns {Client} New client object.
    */
-  static initialize = ({ token: initToken, apiPath }: any): any => {
+  static initialize = async ({ token: initToken, apiPath }: any): Promise<any> => {
     initI18n();
+    // Load profiles (registers models, routes, etc.) before reading routes.routes
+    await initProfiles();
     const client = new Client() as any;
-    const Document = models.get('Document');
 
     routes.routes.map((route: any) => {
       if (route.client) {
@@ -49,13 +50,25 @@ export class Client {
             ...rest
           } = {} as any,
         ) => {
-          await initProfiles();
+          const Document = models.get('Document');
+          // Translate the @plone/client API `expand` arg into a query string,
+          // matching the convention expected by the content route
+          // (req.query.expand is a comma-separated string).
+          // Without this, expand arrays end up in req.params and are ignored,
+          // so @components (navigation, breadcrumbs, etc.) are not populated.
+          const expand = rest.expand;
+          if (expand) delete rest.expand;
           const req = {
             token: initToken || token,
             apiPath,
             documentPath: path || '/',
             body: data,
-            query,
+            query: {
+              ...(query ? query : {}),
+              ...(expand
+                ? { expand: Array.isArray(expand) ? expand.join(',') : expand }
+                : {}),
+            },
             params: {
               ...(params ? params : {}),
               ...rest,

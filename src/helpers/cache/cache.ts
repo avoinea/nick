@@ -71,7 +71,7 @@ export function applyCache(
       case 'private':
       case 'public':
         res.set({
-          'Cache-Policy': [
+          'Cache-Control': [
             cachePolicy.method,
             ...(typeof cachePolicy.maxAge === 'number'
               ? [`max-age=${cachePolicy.maxAge}`]
@@ -86,7 +86,7 @@ export function applyCache(
       case 'no-cache':
       default:
         res.set({
-          'Cache-Policy': ['no-cache', 'no-store', 'must-revalidate'].join(
+          'Cache-Control': ['no-cache', 'no-store', 'must-revalidate'].join(
             ', ',
           ),
         });
