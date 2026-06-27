@@ -22,7 +22,7 @@ export const seedScheduledJob = async (
   const ScheduledJob = models.get('ScheduledJob');
   if (await fileExists(`${profilePath}/scheduled_jobs`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/scheduled_jobs`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/scheduled_jobs`)).default,
     );
     if (profile.purge) {
       await ScheduledJob.delete({}, trx);

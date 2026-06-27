@@ -33,7 +33,7 @@ export const seedType = async (
     // Import behaviors
     await mapAsync(behaviors, async (behavior: string) => {
       const data = stripI18n(
-        (await import(`${profilePath}/behaviors/${behavior}`)).default,
+        (await import(/* @vite-ignore */`${profilePath}/behaviors/${behavior}`)).default,
       );
       await Behavior.create(data, {}, trx);
     });
@@ -50,7 +50,7 @@ export const seedType = async (
     await mapAsync(types, async (type: string) => {
       let typeModel: any;
       const data = stripI18n(
-        (await import(`${profilePath}/types/${type}`)).default,
+        (await import(/* @vite-ignore */`${profilePath}/types/${type}`)).default,
       );
 
       // Check if type exists

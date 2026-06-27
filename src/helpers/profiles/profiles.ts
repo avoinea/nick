@@ -70,7 +70,7 @@ export async function initProfiles(): Promise<void> {
     await mapProfiles(async (profilePath) => {
       try {
         if (await fileExists(`${profilePath}/index`)) {
-          const profileModule = await import(`${profilePath}/index`);
+          const profileModule = await import(/* @vite-ignore */`${profilePath}/index`);
           if (profileModule.init) {
             await profileModule.init();
           }

@@ -22,7 +22,7 @@ export const seedRole = async (
 ): Promise<void> => {
   const Role = models.get('Role');
   if (await fileExists(`${profilePath}/roles`)) {
-    const profile = stripI18n((await import(`${profilePath}/roles`)).default);
+    const profile = stripI18n((await import(/* @vite-ignore */`${profilePath}/roles`)).default);
     if (profile.purge) {
       await Role.delete({}, trx);
     }

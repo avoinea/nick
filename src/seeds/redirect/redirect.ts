@@ -19,7 +19,7 @@ export const seedRedirect = async (
   const Redirect = models.get('Redirect');
   if (await fileExists(`${profilePath}/redirects`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/redirects`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/redirects`)).default,
     );
     if (profile.purge) {
       await Redirect.delete({}, trx);

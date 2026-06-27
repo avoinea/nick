@@ -30,7 +30,7 @@ export const seedVocabulary = async (
     // Import vocabularies
     await mapAsync(vocabularies, async (vocabulary: string) => {
       const data = stripI18n(
-        (await import(`${profilePath}/vocabularies/${vocabulary}`)).default,
+        (await import(/* @vite-ignore */`${profilePath}/vocabularies/${vocabulary}`)).default,
       );
       await Vocabulary.create(data, {}, trx);
     });

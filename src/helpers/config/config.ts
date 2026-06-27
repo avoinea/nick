@@ -36,7 +36,7 @@ const {
 
 let config: any = {};
 if (fs.existsSync(`${process.cwd()}/config.ts`)) {
-  config = (await import(`${process.cwd()}/config`)).config;
+  config = (await import(/* @vite-ignore */`${process.cwd()}/config`)).config;
 }
 const packageEntry = fileURLToPath(import.meta.resolve('@plone/nick'));
 const packageRoot = path.dirname(packageEntry);

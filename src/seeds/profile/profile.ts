@@ -21,7 +21,7 @@ export const seedProfile = async (
   const Profile = models.get('Profile');
   if (await fileExists(`${profilePath}/metadata`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/metadata`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/metadata`)).default,
     );
     await Profile.deleteById(profile.id, trx);
     await Profile.create(omit(profile, ['upgrade']), {}, trx);

@@ -19,7 +19,7 @@ export const seedCatalog = async (
 ): Promise<void> => {
   const Index = models.get('Index');
   if (await fileExists(`${profilePath}/catalog`)) {
-    const profile = stripI18n((await import(`${profilePath}/catalog`)).default);
+    const profile = stripI18n((await import(/* @vite-ignore */`${profilePath}/catalog`)).default);
     await mapAsync(profile.indexes, async (index: any) => {
       // Add index
       await Index.create(

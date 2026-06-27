@@ -24,7 +24,7 @@ export const seedContentRule = async (
   const ContentRule = models.get('ContentRule');
   if (await fileExists(`${profilePath}/content_rules`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/content_rules`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/content_rules`)).default,
     );
     if (profile.purge) {
       await ContentRule.delete({}, trx);

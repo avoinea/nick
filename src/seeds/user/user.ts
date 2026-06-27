@@ -34,7 +34,7 @@ export const seedUser = async (
   const User = models.get('User');
 
   if (await fileExists(`${profilePath}/users`)) {
-    const profile = stripI18n((await import(`${profilePath}/users`)).default);
+    const profile = stripI18n((await import(/* @vite-ignore */`${profilePath}/users`)).default);
     if (profile.purge) {
       await User.delete({}, trx);
     }

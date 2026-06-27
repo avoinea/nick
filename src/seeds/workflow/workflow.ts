@@ -22,7 +22,7 @@ export const seedWorkflow = async (
   const Workflow = models.get('Workflow');
   if (await fileExists(`${profilePath}/workflows`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/workflows`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/workflows`)).default,
     );
     if (profile.purge) {
       await Workflow.delete({}, trx);

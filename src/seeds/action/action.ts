@@ -18,7 +18,7 @@ export const seedAction = async (
 ): Promise<void> => {
   const Action = models.get('Action');
   if (await fileExists(`${profilePath}/actions`)) {
-    const profile = stripI18n((await import(`${profilePath}/actions`)).default);
+    const profile = stripI18n((await import(/* @vite-ignore */`${profilePath}/actions`)).default);
     if (profile.purge) {
       await Action.delete({}, trx);
     }

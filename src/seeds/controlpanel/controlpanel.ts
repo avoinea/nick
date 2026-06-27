@@ -38,7 +38,7 @@ export const seedControlpanel = async (
     // Import controlpanels
     await mapAsync(controlpanels, async (controlpanel: string) => {
       const data: any = stripI18n(
-        (await import(`${profilePath}/controlpanels/${controlpanel}`)).default,
+        (await import(/* @vite-ignore */`${profilePath}/controlpanels/${controlpanel}`)).default,
       );
 
       // Check if controlpanel exists

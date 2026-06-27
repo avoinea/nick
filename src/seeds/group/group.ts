@@ -21,7 +21,7 @@ export const seedGroup = async (
 ): Promise<void> => {
   const Group = models.get('Group');
   if (await fileExists(`${profilePath}/groups`)) {
-    const profile = stripI18n((await import(`${profilePath}/groups`)).default);
+    const profile = stripI18n((await import(/* @vite-ignore */`${profilePath}/groups`)).default);
     if (profile.purge) {
       await Group.delete({}, trx);
     }

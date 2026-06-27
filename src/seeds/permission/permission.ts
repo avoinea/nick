@@ -19,7 +19,7 @@ export const seedPermission = async (
   const Permission = models.get('Permission');
   if (await fileExists(`${profilePath}/permissions`)) {
     const profile = stripI18n(
-      (await import(`${profilePath}/permissions`)).default,
+      (await import(/* @vite-ignore */`${profilePath}/permissions`)).default,
     );
     if (profile.purge) {
       await Permission.delete({}, trx);

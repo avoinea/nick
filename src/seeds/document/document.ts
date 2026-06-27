@@ -69,7 +69,7 @@ export const seedDocument = async (
       .sort();
     await mapAsync(files, async (file: string) => {
       let document: any = stripI18n(
-        (await import(`${profilePath}/documents/${file}`)).default,
+        (await import(/* @vite-ignore */`${profilePath}/documents/${file}`)).default,
       );
       const slugs = file.split('.');
       const id = last(slugs) === '_root' ? 'root' : last(slugs);
